@@ -5,7 +5,11 @@ import os
 def markdown_to_html(text):
     return markdown.markdown(text)
 
-file_list = os.listdir("./my_blog")
+try:
+    file_list = os.listdir("./my_blog")
+except:
+    os.mkdir("./my_blog")
+    file_list = os.listdir("./my_blog")
 print(file_list)
 for i in file_list:
     aaa = i.split(".")
