@@ -1,4 +1,5 @@
 import markdown
+import shutil
 import bs4
 import os
  
@@ -35,3 +36,4 @@ for i in file_list:
     new_html = soup.prettify()
     with open('index.html','w',encoding="utf-8") as f:
         f.write(new_html)
+    shutil.move("./my_blog/"+i,"./bf/"+aaa[0]+".markdown")
