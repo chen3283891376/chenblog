@@ -25,7 +25,7 @@ for i in file_list:
     file.write(html_text)
     file.close()
 
-    with open('index.html','r',encoding="utf-8") as f:
+    with open('blog.html','r',encoding="utf-8") as f:
         text = f.read()
     soup = bs4.BeautifulSoup(text,'html.parser')
     new_a = soup.new_tag("a",href="./"+aaa[0]+".html",align="center")
@@ -34,6 +34,6 @@ for i in file_list:
     soup.body.div.append(new_a)
     soup.body.div.append(br)
     new_html = soup.prettify()
-    with open('index.html','w',encoding="utf-8") as f:
+    with open('blog.html','w',encoding="utf-8") as f:
         f.write(new_html)
     shutil.move("./my_blog/"+i,"./bf/"+aaa[0]+".markdown")
