@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Open index.html",
+            "file": "d:\\Java&python基站\\blog\\index.html"
+        },
+        {
+            "type": "node-terminal",
+            "name": "JavaScript 调试终端",
+            "request": "launch",
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
