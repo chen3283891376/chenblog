@@ -1,5 +1,4 @@
-// import { Vue } from 'https://fastly.jsdelivr.net/npm/vue';
-if (location.search.split("?")[1]==undefined) location.search="?1";
+// import hljs from 'https://fastly.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/es/highlight.min.js';
 vm = Vue.createApp({
     data:function(){
         var a;
@@ -13,7 +12,7 @@ vm = Vue.createApp({
             list = JSON.parse(xhr1.responseText);
             console.log(list.length);
             
-            var param = Number(location.href.split("?")[1])-1;
+            var param = Number(location.search.split("?")[1])-1;
             if (list[param]!= undefined) {
                 var xhr2 = new XMLHttpRequest();
                 xhr2.open('GET', `./article/${list[param]["file"]}`, false);
@@ -36,34 +35,34 @@ vm = Vue.createApp({
         return{
             text: a,
             word: title,
+            page: param+1,
             showright: true,
-            showleft: true
+            showleft: true,
+            list: list
+        }
+    },
+    methods:{
+        lastpage: function(){
+            var page = this.page-1;
+            list = this.list
+            len = list.length;
+            if (page<1) this.showleft=false;
+            else{
+                location.search = "?"+String(page);
+            }
+        },
+        nextpage: function(){
+            var page = this.page+1;
+            list = this.list
+            len = list.length;
+            if (page>len) this.showleft=false;
+            else{
+                location.search = "?"+String(page);
+            }
         }
     }
 }).mount("#content")
 
-const nextpage = () => {
-    var page = Number(location.search.split("?")[1])+1;
-    var xhr1 = new XMLHttpRequest();
-    xhr1.open('GET', './article.json', false); // 第三个参数设置为false表示同步请求
-    xhr1.send();
-    len = JSON.parse(xhr1.responseText).length;
-    if (page>len) vm.showright=false;
-    else{
-        location.search = "?"+String(page);
-    }
-};
-const lastpage = () => {
-    var page = Number(location.search.split("?")[1])-1;
-    var xhr1 = new XMLHttpRequest();
-    xhr1.open('GET', './article.json', false); // 第三个参数设置为false表示同步请求
-    xhr1.send();
-    len = JSON.parse(xhr1.responseText).length;
-    if (page<1) vm.showleft=false;
-    else{
-        location.search = "?"+String(page);
-    }
-};
 window.onload = ()=>{
     var page = Number(location.search.split("?")[1]);
     var xhr1 = new XMLHttpRequest();
