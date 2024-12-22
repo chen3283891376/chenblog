@@ -1,4 +1,5 @@
 // import hljs from 'https://fastly.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/es/highlight.min.js';
+if (location.search.split("?")[1]==undefined) location.search="?1"
 vm = Vue.createApp({
     data:function(){
         var a;
@@ -61,7 +62,7 @@ vm = Vue.createApp({
             }
         }
     }
-}).mount("#content")
+})。mount("#content")
 
 window.onload = ()=>{
     var page = Number(location.search.split("?")[1]);
