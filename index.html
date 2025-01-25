@@ -23,13 +23,14 @@
         <div class="marked" id="content" style="width: 70%;margin-left: auto;margin-right: auto;">
             <h3 style="text-align: center;">{{word}}</h3>
             <p v-html="text"></p>
-            <button class="pretty-button" style="left: 0%;position: absolute;" v-show="showleft" v-on:click="lastpage();update();">Last</button>
-            <button class="pretty-button" style="right: 0%;position: absolute;" v-show="showright" v-on:click="nextpage();update();">Next</button>
+            <button class="pretty-button" style="left: 0%;position: absolute;" v-show="showleft" v-on:click="lastpage();update();">Last Page</button>
+            <button class="pretty-button" style="right: 0%;position: absolute;" v-show="showright" v-on:click="nextpage();update();">Next Page</button>
         </div>
         <script src="./test.js"></script>
-    </body><br><br>
+    </body>
+    <br><br>
     <footer>
-        <div id="gitalk-container"></div>
+        <div id="gitalk-container" style="width: 70%;margin: auto;"></div>
         <script>
             var gitalk = new Gitalk({
             clientID: 'Ov23livBIZjb7hbAC61K',
