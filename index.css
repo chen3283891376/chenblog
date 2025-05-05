@@ -280,3 +280,7 @@ tr {
 .copy-btn:hover {
     background-color: var(--secondary-color);
 }
+
+.utterances {
+    max-width: 800px;
+}

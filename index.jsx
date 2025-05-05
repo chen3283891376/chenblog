@@ -94,14 +94,17 @@ const App = () => {
                             }}
                         >Next Page</button>
                     </div>
+                    <br /><br />
                     <div>
-                        <script src="https://utteranc.es/client.js"
-                            repo="chen3283891376/chenblog"
-                            issue-term="pathname"
-                            theme={isDarkMode ? 'github-dark' : 'github-light'}
-                            crossOrigin="anonymous"
-                            async
-                        ></script>
+                        <section className="comments">
+                            <script src="https://utteranc.es/client.js"
+                                repo="chen3283891376/chenblog"
+                                issue-term="pathname"
+                                theme={isDarkMode ? 'github-dark' : 'github-light'}
+                                crossOrigin="anonymous"
+                                async
+                            ></script>
+                        </section>
                     </div>
                 </div>
             );
