@@ -40,6 +40,18 @@ const App = () => {
             const contentResponse = await fetch(`./posts/${data[page - 1].file}`);
             const content = await contentResponse.text();
             const contentHtml = marked.render(content);
+
+            if (page === 1) {
+                setShowLeft(false);
+            } else {
+                setShowLeft(true);
+            }
+            if (page === data.length) {
+                setShowRight(false);
+            } else {
+                setShowRight(true);
+            }
+
             setPageComponent(
                 <div>
                     <div className="marked" id="content" style={{
@@ -93,16 +105,6 @@ const App = () => {
                     </div>
                 </div>
             );
-            if (page === 1) {
-                setShowLeft(false);
-            } else {
-                setShowLeft(true);
-            }
-            if (page === data.length) {
-                setShowRight(false);
-            } else {
-                setShowRight(true);
-            }
         };
         if (!ignore) func();
         return () => {
