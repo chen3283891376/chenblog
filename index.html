@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <title>chen-blog</title>
-        <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css">
-        <script defer src="./js/katex.js"></script>
-        <script defer src="./js/auto-render.js"></script>
+        <title>Chen Blog</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+        <!-- KaTeX -->
+        <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+        <script defer src="https://fastly.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+        <script defer src="https://fastly.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+
+        <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
+        <!-- <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script> -->
+        
+        <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/babel-standalone/6.26.0/babel.min.js" ></script>
+        <script src="https://fastly.jsdelivr.net/npm/react@18.2.0/umd/react.development.min.js"></script>
+        <script src="https://fastly.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.development.min.js"></script>
 
         <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/stackoverflow-dark.min.css">
         <script src="./js/highlight.js"></script>
-        <script src="./js/go.js"></script>
-        <script src="./js/markdown-it.js"></script>
-        
-        <link href="./index.css" rel="stylesheet">
-        <script src="./js/vue.js"></script>
+
+        <!-- MarkdownIt -->
+        <script src="https://fastly.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js"></script>
+
+        <link rel="stylesheet" href="./index.css">
     </head>
+
     <body>
-        <h1 style="text-align: center;" id="title">blog死灰复燃哩</h1>
-        <div class="marked" id="content" style="width: 70%;margin-left: auto;margin-right: auto;">
-            <h3 style="text-align: center;">{{word}}</h3>
-            <p v-html="text"></p>
-            <button class="pretty-button" style="left: 0%;position: absolute;" v-show="showleft" v-on:click="lastpage();update();">Last Page</button>
-            <button class="pretty-button" style="right: 0%;position: absolute;" v-show="showright" v-on:click="nextpage();update();">Next Page</button>
-        </div>
-        <script src="./test.js"></script>
+        <div id="app"></div>
+        <script type="text/babel" src="./index.jsx"></script>
     </body>
-    <br><br>
+
+    
+    <!-- <br><br>
     <footer>
         <div id="gitalk-container" style="width: 70%;margin: auto;"></div>
         <script>
@@ -38,11 +42,11 @@
             repo: 'chenblog',
             owner: 'chen3283891376',
             admin: ['chen3283891376'],
-            id: location.search.split("?")[1],      // Ensure uniqueness and length less than 50
+            id: new URLSearchParams(location.search).get('page') || "1",      // Ensure uniqueness and length less than 50
             distractionFreeMode: false  // Facebook-like distraction free mode
             })
 
             gitalk.render('gitalk-container')
         </script>
-    </footer>
+    </footer> -->
 </html>

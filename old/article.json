@@ -5,6 +5,10 @@
     },
     {
         "name": "Lorem ipsum",
+        "file": "ipsum.md"
+    },
+    {
+        "name": "杂谈",
         "file": "2.md"
     }
 ]

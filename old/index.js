@@ -1,14 +1,4 @@
-// const marked = window.markdownit({
-//     highlight: function (str, lang) {
-//         if (lang && hljs.getLanguage(lang)) {
-//         try {
-//             return hljs.highlight(lang, str).value;
-//         } catch (__) {}
-//         }
-        
-//         return ''; // 使用额外的默认转义
-//     }
-// });
+// 这里已废弃
 const marked = window.markdownit();
 list = null
 $.get(`./article.json`, function(response, status, xhr){
