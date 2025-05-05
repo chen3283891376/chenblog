@@ -115,16 +115,16 @@ const App = () => {
             el.parentNode.insertBefore(head_el, el);
         });
 
-        const comments = document.querySelector('.comments');
+        const comments = document.querySelector('#comments');
         if (comments) {
-            const utterances = document.createElement('script');
-            utterances.src = 'https://utteranc.es/client.js';
-            utterances.async = true;
-            utterances.crossOrigin = 'anonymous';
-            utterances.setAttribute('repo', 'chen3283891376/chenblog');
-            utterances.setAttribute('issue-term', 'pathname');
-            utterances.setAttribute('theme', isDarkMode ? 'github-dark' : 'github-light');
-            comments.appendChild(utterances);
+            const utterances = document.createElement('script')
+            utterances.setAttribute('src', 'https://utteranc.es/client.js')
+            utterances.setAttribute('repo', "chen3283891376/chenblog")
+            utterances.setAttribute('issue-term', "pathname")
+            utterances.setAttribute('theme', isDarkMode ? 'github-dark' : 'github-light')
+            utterances.setAttribute('crossOrigin', 'anonymous')
+            utterances.setAttribute('async', 'true')
+            comments.appendChild(utterances)
         }
     }, [pageComponent]);
 
@@ -169,7 +169,7 @@ const App = () => {
                 >Next Page</button>
             </div>
             <br /><br />
-            <section className="comments">
+            <div className="comments" id="comments">
                     {/* <script src="https://utteranc.es/client.js"
                             repo="chen3283891376/chenblog"
                             issue-term="pathname"
@@ -177,7 +177,7 @@ const App = () => {
                             crossOrigin="anonymous"
                             async
                     ></script> */}
-            </section>
+            </div>
         </div>
     );
 };
