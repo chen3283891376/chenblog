@@ -8,7 +8,6 @@ const App = () => {
     const [show_right, setShowRight] = React.useState(true);
     const [pageComponent, setPageComponent] = React.useState(<div>Loading...</div>);
     const [isDarkMode, setIsDarkMode] = React.useState(false);
-    const comments = React.useRef(null);
 
     React.useEffect(() => {
         const storedMode = localStorage.getItem('theme');
@@ -42,19 +41,56 @@ const App = () => {
             const content = await contentResponse.text();
             const contentHtml = marked.render(content);
             setPageComponent(
-                <div className="marked" id="content" style={{
-                    width: '70%',
-                    marginLeft: 'auto',
-                    marginRight: 'auto',
-                }}>
-                    <h3 style={{
-                        textAlign: 'center',
-                    }}>Article: {data[page - 1].name}</h3>
-                    <p ref={(ref) => {
-                        if (ref) {
-                            ref.innerHTML = contentHtml;
-                        }
-                    }}></p>
+                <div>
+                    <div className="marked" id="content" style={{
+                        width: '70%',
+                        marginLeft: 'auto',
+                        marginRight: 'auto',
+                    }}>
+                        <h3 style={{
+                            textAlign: 'center',
+                        }}>Article: {data[page - 1].name}</h3>
+                        <p ref={(ref) => {
+                            if (ref) {
+                                ref.innerHTML = contentHtml;
+                            }
+                        }}></p>
+                    </div>
+                    <div>
+                        <button
+                            className="pretty-button"
+                            style={{
+                                left: 0,
+                                position: 'absolute',
+                                display: show_left ? 'block' : 'none'
+                            }}
+                            onClick={() => {
+                                setPage(page - 1);
+                                history.pushState(null, null, `?page=${page - 1}`);
+                            }}
+                        >Last Page</button>
+                        <button
+                            className="pretty-button"
+                            style={{
+                                right: 0,
+                                position: 'absolute',
+                                display: show_right ? 'block' : 'none'
+                            }}
+                            onClick={() => {
+                                setPage(page + 1);
+                                history.pushState(null, null, `?page=${page + 1}`);
+                            }}
+                        >Next Page</button>
+                    </div>
+                    <div>
+                        <script src="https://utteranc.es/client.js"
+                            repo="chen3283891376/chenblog"
+                            issue-term="pathname"
+                            theme={isDarkMode ? 'github-dark' : 'github-light'}
+                            crossOrigin="anonymous"
+                            async
+                        ></script>
+                    </div>
                 </div>
             );
             if (page === 1) {
@@ -75,16 +111,6 @@ const App = () => {
     }, [page]);
 
     React.useEffect(() => {
-        if (comments.current) {
-            const script = document.createElement('script');
-            script.src = 'https://utteranc.es/client.js';
-            script.async = true;
-            script.crossOrigin = 'anonymous';
-            script.setAttribute('repo', 'chen3283891376/chenblog');
-            script.setAttribute('issue-term', 'pathname');
-            script.setAttribute('theme', `github-${isDarkMode ? 'dark' : 'light'}`);
-        }
-
         if (typeof renderMathInElement !== 'undefined') {
             renderMathInElement(document.body, {
                 delimiters: [
@@ -139,33 +165,6 @@ const App = () => {
             <div>
                 {pageComponent}
             </div>
-            <div>
-                <button
-                    className="pretty-button"
-                    style={{
-                        left: 0,
-                        position: 'absolute',
-                        display: show_left ? 'block' : 'none'
-                    }}
-                    onClick={() => {
-                        setPage(page - 1);
-                        history.pushState(null, null, `?page=${page - 1}`);
-                    }}
-                >Last Page</button>
-                <button
-                    className="pretty-button"
-                    style={{
-                        right: 0,
-                        position: 'absolute',
-                        display: show_right ? 'block' : 'none'
-                    }}
-                    onClick={() => {
-                        setPage(page + 1);
-                        history.pushState(null, null, `?page=${page + 1}`);
-                    }}
-                >Next Page</button>
-            </div>
-            <div ref={comments}></div>
         </div>
     );
 };
