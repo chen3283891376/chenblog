@@ -8,6 +8,7 @@ const App = () => {
     const [show_right, setShowRight] = React.useState(true);
     const [pageComponent, setPageComponent] = React.useState(<div>Loading...</div>);
     const [isDarkMode, setIsDarkMode] = React.useState(false);
+    const comments = React.useRef(null);
 
     React.useEffect(() => {
         const storedMode = localStorage.getItem('theme');
@@ -74,6 +75,16 @@ const App = () => {
     }, [page]);
 
     React.useEffect(() => {
+        if (comments.current) {
+            const script = document.createElement('script');
+            script.src = 'https://utteranc.es/client.js';
+            script.async = true;
+            script.crossOrigin = 'anonymous';
+            script.setAttribute('repo', 'chen3283891376/chenblog');
+            script.setAttribute('issue-term', 'pathname');
+            script.setAttribute('theme', `github-${isDarkMode ? 'dark' : 'light'}`);
+        }
+
         if (typeof renderMathInElement !== 'undefined') {
             renderMathInElement(document.body, {
                 delimiters: [
@@ -154,6 +165,7 @@ const App = () => {
                     }}
                 >Next Page</button>
             </div>
+            <div ref={comments}></div>
         </div>
     );
 };
