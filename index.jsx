@@ -1,5 +1,5 @@
-// import React from "react";
-// import ReactDOM from "react-dom";
+import React from "react";
+import ReactDOM from "react-dom";
 
 const App = () => {
     const params = new URLSearchParams(window.location.search);
@@ -53,59 +53,19 @@ const App = () => {
             }
 
             setPageComponent(
-                <div>
-                    <div className="marked" id="content" style={{
-                        width: '70%',
-                        marginLeft: 'auto',
-                        marginRight: 'auto',
-                    }}>
-                        <h3 style={{
-                            textAlign: 'center',
-                        }}>Article: {data[page - 1].name}</h3>
-                        <p ref={(ref) => {
-                            if (ref) {
-                                ref.innerHTML = contentHtml;
-                            }
-                        }}></p>
-                    </div>
-                    <div>
-                        <button
-                            className="pretty-button"
-                            style={{
-                                left: 0,
-                                position: 'absolute',
-                                display: show_left ? 'block' : 'none'
-                            }}
-                            onClick={() => {
-                                setPage(page - 1);
-                                history.pushState(null, null, `?page=${page - 1}`);
-                            }}
-                        >Last Page</button>
-                        <button
-                            className="pretty-button"
-                            style={{
-                                right: 0,
-                                position: 'absolute',
-                                display: show_right ? 'block' : 'none'
-                            }}
-                            onClick={() => {
-                                setPage(page + 1);
-                                history.pushState(null, null, `?page=${page + 1}`);
-                            }}
-                        >Next Page</button>
-                    </div>
-                    <br /><br />
-                    <div>
-                        <section className="comments">
-                            <script src="https://utteranc.es/client.js"
-                                repo="chen3283891376/chenblog"
-                                issue-term="pathname"
-                                theme={isDarkMode ? 'github-dark' : 'github-light'}
-                                crossOrigin="anonymous"
-                                async
-                            ></script>
-                        </section>
-                    </div>
+                <div className="marked" id="content" style={{
+                    width: '70%',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                }}>
+                    <h3 style={{
+                        textAlign: 'center',
+                    }}>Article: {data[page - 1].name}</h3>
+                    <p ref={(ref) => {
+                        if (ref) {
+                            ref.innerHTML = contentHtml;
+                        }
+                    }}></p>
                 </div>
             );
         };
@@ -119,10 +79,9 @@ const App = () => {
         if (typeof renderMathInElement !== 'undefined') {
             renderMathInElement(document.body, {
                 delimiters: [
-                    { left: '$$', right: '$$', display: true },
                     { left: '$', right: '$', display: true },
-                    { left: '\\(', right: '\\)', display: true },
-                    { left: '\\[', right: '\\]', display: true }
+                    { left: '\$', right: '\$', display: true },
+                    { left: '\$', right: '\$', display: true }
                 ],
                 throwOnError: false,
             });
@@ -153,7 +112,19 @@ const App = () => {
             head_el.appendChild(copy_el);
 
             el.parentNode.insertBefore(head_el, el);
-        })
+        });
+
+        const comments = document.querySelector('.comments');
+        if (comments) {
+            const utterances = document.createElement('script');
+            utterances.src = 'https://utteranc.es/client.js';
+            utterances.async = true;
+            utterances.crossOrigin = 'anonymous';
+            utterances.setAttribute('repo', 'chen3283891376/chenblog');
+            utterances.setAttribute('issue-term', 'pathname');
+            utterances.setAttribute('theme', isDarkMode ? 'github-dark' : 'github-light');
+            comments.appendChild(utterances);
+        }
     }, [pageComponent]);
 
     return (
@@ -170,6 +141,42 @@ const App = () => {
             <div>
                 {pageComponent}
             </div>
+            <div>
+                <button
+                    className="pretty-button"
+                    style={{
+                        left: 0,
+                        position: 'absolute',
+                        display: show_left ? 'block' : 'none'
+                    }}
+                    onClick={() => {
+                        setPage(page - 1);
+                        history.pushState(null, null, `?page=${page - 1}`);
+                    }}
+                >Last Page</button>
+                <button
+                    className="pretty-button"
+                    style={{
+                        right: 0,
+                        position: 'absolute',
+                        display: show_right ? 'block' : 'none'
+                    }}
+                    onClick={() => {
+                        setPage(page + 1);
+                        history.pushState(null, null, `?page=${page + 1}`);
+                    }}
+                >Next Page</button>
+            </div>
+            <br /><br />
+            <section className="comments">
+                    {/* <script src="https://utteranc.es/client.js"
+                            repo="chen3283891376/chenblog"
+                            issue-term="pathname"
+                            theme={isDarkMode ? 'github-dark' : 'github-light'}
+                            crossOrigin="anonymous"
+                            async
+                    ></script> */}
+            </section>
         </div>
     );
 };
