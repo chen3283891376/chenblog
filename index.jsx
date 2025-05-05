@@ -74,7 +74,7 @@ const App = () => {
     }, [page]);
 
     React.useEffect(() => {
-        if (typeof renderMathInElement!== 'undefined') {
+        if (typeof renderMathInElement !== 'undefined') {
             renderMathInElement(document.body, {
                 delimiters: [
                     { left: '$$', right: '$$', display: true },
@@ -88,10 +88,35 @@ const App = () => {
         if (typeof hljs!== 'undefined') {
             hljs.highlightAll();
         }
+        
+        document.querySelectorAll('.marked code').forEach(el => {
+            const lang = el.className.replace('language-', '').replace(' hljs','');
+            let head_el = document.createElement('div');
+            head_el.className = 'code-header';
+
+            let lang_el = document.createElement('span');
+            lang_el.innerText = lang;
+            head_el.appendChild(lang_el);
+
+            let copy_el = document.createElement('button');
+            copy_el.className = 'copy-btn';
+            copy_el.innerText = 'Copy';
+            copy_el.addEventListener('click', () => {
+                navigator.clipboard.writeText(el.outerText);
+                copy_el.innerText = 'Copied!';
+                setTimeout(() => {
+                    copy_el.innerText = 'Copy';
+                }, 1000);
+            });
+            head_el.appendChild(copy_el);
+
+            el.parentNode.insertBefore(head_el, el);
+        })
     }, [pageComponent]);
 
     return (
         <div>
+            <link rel="stylesheet" href={`https://fastly.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/stackoverflow-${isDarkMode ? 'dark' : 'light'}.min.css`} crossOrigin="anonymous" />
             <h1 style={{ textAlign: 'center' }}>Chen Blog</h1>
             <button
                 className="pretty-button"

@@ -134,15 +134,13 @@ tr {
 /* 代码块相关 */
 .marked code,
 .marked pre {
-    font-family: 'Fira Code', monospace;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     background-color: var(--code-background-color);
-    border: 1px solid #d0d0d0;
-    border-radius: 5px;
 }
 
 .marked code {
     margin: 0.2em;
-    padding: 0.1em 0.2em;
+    /* padding: 0.1em 0.2em; */
     tab-size: 4;
     -moz-tab-size: 4;
     background-color: var(--inline-code-background-color);
@@ -150,10 +148,10 @@ tr {
 
 .marked pre {
     margin: 0;
-    padding: 1em;
     overflow-y: auto;
-    background-color: var(--code-block-background-color);
     color: var(--code-block-text-color);
+    border: 1px solid #d0d0d0;
+    border-radius: 5px;
 }
 
 .marked pre>code {
@@ -161,15 +159,6 @@ tr {
     margin: 0;
     white-space: pre;
     border: none;
-}
-
-.code-block-head {
-    padding: 8px 10px;
-    background-color: #333;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    color: #fff;
-    font-weight: bold;
 }
 
 .language-tag {
@@ -270,4 +259,24 @@ tr {
 
 .dark-mode p {
     color: var(--text-color);
+}
+
+.code-header {
+    padding: 5px 5px 5px 10px;
+    overflow: auto;
+}
+
+.copy-btn {
+    float: right;
+    border:  none;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.copy-btn:hover {
+    background-color: var(--secondary-color);
 }
