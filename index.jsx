@@ -1,5 +1,5 @@
-// import React, { React.useState, React.useEffect } from 'react';
-// import ReactDOM from 'react-dom/client';
+// import React from "react";
+// import ReactDOM from "react-dom";
 
 const App = () => {
     const params = new URLSearchParams(window.location.search);
@@ -78,19 +78,19 @@ const App = () => {
             renderMathInElement(document.body, {
                 delimiters: [
                     { left: '$$', right: '$$', display: true },
-                    { left: '$', right: '$', display: false },
-                    { left: '\\(', right: '\\)', display: false },
+                    { left: '$', right: '$', display: true },
+                    { left: '\\(', right: '\\)', display: true },
                     { left: '\\[', right: '\\]', display: true }
                 ],
                 throwOnError: false,
             });
         }
-        if (typeof hljs!== 'undefined') {
+        if (typeof hljs !== 'undefined') {
             hljs.highlightAll();
         }
-        
+
         document.querySelectorAll('.marked code').forEach(el => {
-            const lang = el.className.replace('language-', '').replace(' hljs','');
+            const lang = el.className.replace('language-', '').replace(' hljs', '');
             let head_el = document.createElement('div');
             head_el.className = 'code-header';
 
@@ -123,7 +123,7 @@ const App = () => {
                 style={{ position: 'absolute', top: "10px", right: "10px" }}
                 onClick={toggleTheme}
             >
-                {!isDarkMode? 'Light' : 'Dark'}
+                {!isDarkMode ? 'Light' : 'Dark'}
             </button>
             <div>
                 {pageComponent}
@@ -134,7 +134,7 @@ const App = () => {
                     style={{
                         left: 0,
                         position: 'absolute',
-                        display: show_left? 'block' : 'none'
+                        display: show_left ? 'block' : 'none'
                     }}
                     onClick={() => {
                         setPage(page - 1);
@@ -146,7 +146,7 @@ const App = () => {
                     style={{
                         right: 0,
                         position: 'absolute',
-                        display: show_right? 'block' : 'none'
+                        display: show_right ? 'block' : 'none'
                     }}
                     onClick={() => {
                         setPage(page + 1);
