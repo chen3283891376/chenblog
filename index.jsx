@@ -117,6 +117,8 @@ const App = () => {
 
         const comments = document.querySelector('#comments');
         if (comments) {
+            comments.innerHTML = '';
+
             const utterances = document.createElement('script')
             utterances.setAttribute('src', 'https://utteranc.es/client.js')
             utterances.setAttribute('repo', "chen3283891376/chenblog")
