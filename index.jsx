@@ -171,14 +171,8 @@ const App = () => {
                 >Next Page</button>
             </div>
             <br /><br />
-            <div className="comments" id="comments">
-                    {/* <script src="https://utteranc.es/client.js"
-                            repo="chen3283891376/chenblog"
-                            issue-term="pathname"
-                            theme={isDarkMode ? 'github-dark' : 'github-light'}
-                            crossOrigin="anonymous"
-                            async
-                    ></script> */}
+            <div>
+                <section className="comments" id="comments"></section>
             </div>
         </div>
     );
