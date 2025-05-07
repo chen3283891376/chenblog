@@ -9,6 +9,10 @@ const App = () => {
     const [pageComponent, setPageComponent] = React.useState(<div>Loading...</div>);
     const [isDarkMode, setIsDarkMode] = React.useState(false);
 
+    if (!params.get('page')) {
+        history.pushState(null, null, `?page=1`);
+    }
+
     React.useEffect(() => {
         const storedMode = localStorage.getItem('theme');
         if (storedMode === 'dark') {
