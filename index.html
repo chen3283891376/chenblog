@@ -31,21 +31,26 @@
     </body>
 
     
-    <!-- <br><br>
+    <br><br>
     <footer>
         <div id="gitalk-container" style="width: 70%;margin: auto;"></div>
         <script>
-            var gitalk = new Gitalk({
-            clientID: 'Ov23livBIZjb7hbAC61K',
-            clientSecret: 'd88804d5ec8f3c2e6c94c4a853eadc465e7c33dd',
-            repo: 'chenblog',
-            owner: 'chen3283891376',
-            admin: ['chen3283891376'],
-            id: new URLSearchParams(location.search).get('page') || "1",      // Ensure uniqueness and length less than 50
-            distractionFreeMode: false  // Facebook-like distraction free mode
-            })
+            const container = document.getElementById('gitalk-container');
+            document.addEventListener('popstate', () => {
+                container.innerHTML = '';
 
-            gitalk.render('gitalk-container')
+                var gitalk = new Gitalk({
+                clientID: 'Ov23livBIZjb7hbAC61K',
+                clientSecret: 'd88804d5ec8f3c2e6c94c4a853eadc465e7c33dd',
+                repo: 'chenblog',
+                owner: 'chen3283891376',
+                admin: ['chen3283891376'],
+                id: new URLSearchParams(location.search).get('page') || "1",      // Ensure uniqueness and length less than 50
+                distractionFreeMode: false  // Facebook-like distraction free mode
+                })
+
+                gitalk.render('gitalk-container')
+            });
         </script>
-    </footer> -->
+    </footer>
 </html>

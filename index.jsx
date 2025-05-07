@@ -115,30 +115,19 @@ const App = () => {
             el.parentNode.insertBefore(head_el, el);
         });
 
-        const comments = document.querySelector('.gitalk-container');
-        if (comments) {
-            comments.innerHTML = '';
+        // const comments = document.querySelector('.gitalk-container');
+        // if (comments) {
+        //     comments.innerHTML = '';
 
-            // const utterances = document.createElement('script')
-            // utterances.setAttribute('src', 'https://utteranc.es/client.js')
-            // utterances.setAttribute('repo', "chen3283891376/chenblog")
-            // utterances.setAttribute('issue-term', "pathname")
-            // utterances.setAttribute('theme', isDarkMode ? 'github-dark' : 'github-light')
-            // utterances.setAttribute('crossOrigin', 'anonymous')
-            // utterances.setAttribute('async', 'true')
-            // comments.appendChild(utterances)
-
-            const gitalk = new Gitalk({
-                clientID: '0d5d5a7d0d5d5a7d0d5d',
-                clientSecret: '0d5d5a7d',
-                repo: 'chenblog',
-                owner: 'chen3283891376',
-                admin: ['chen3283891376'],
-                id: location.pathname,
-                distractionFreeMode: false,
-            })
-            gitalk.render('gitalk-container')
-        }
+        //     // const utterances = document.createElement('script')
+        //     // utterances.setAttribute('src', 'https://utteranc.es/client.js')
+        //     // utterances.setAttribute('repo', "chen3283891376/chenblog")
+        //     // utterances.setAttribute('issue-term', "pathname")
+        //     // utterances.setAttribute('theme', isDarkMode ? 'github-dark' : 'github-light')
+        //     // utterances.setAttribute('crossOrigin', 'anonymous')
+        //     // utterances.setAttribute('async', 'true')
+        //     // comments.appendChild(utterances)
+        // }
     }, [pageComponent]);
 
     return (
@@ -183,9 +172,9 @@ const App = () => {
             </div>
             <br /><br />
             {/* <div className="comments" id="comments"></div> */}
-            <footer>
+            {/* <footer>
                 <div id='gitalk-container' style={{ margin: "auto", maxWidth: "600px" }}></div>
-            </footer>
+            </footer> */}
         </div>
     );
 };
