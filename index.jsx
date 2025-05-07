@@ -122,7 +122,7 @@ const App = () => {
             const utterances = document.createElement('script')
             utterances.setAttribute('src', 'https://utteranc.es/client.js')
             utterances.setAttribute('repo', "chen3283891376/chenblog")
-            utterances.setAttribute('issue-term', "URL")
+            utterances.setAttribute('issue-term', "title")
             utterances.setAttribute('theme', isDarkMode ? 'github-dark' : 'github-light')
             utterances.setAttribute('crossOrigin', 'anonymous')
             utterances.setAttribute('async', 'true')
@@ -155,6 +155,7 @@ const App = () => {
                     onClick={() => {
                         setPage(page - 1);
                         history.pushState(null, null, `?page=${page - 1}`);
+                        document.title = `Page ${page} - Chen Blog`;
                     }}
                 >Last Page</button>
                 <button
@@ -167,6 +168,7 @@ const App = () => {
                     onClick={() => {
                         setPage(page + 1);
                         history.pushState(null, null, `?page=${page + 1}`);
+                        document.title = `Page ${page} - Chen Blog`;
                     }}
                 >Next Page</button>
             </div>
