@@ -122,7 +122,7 @@ const App = () => {
             const utterances = document.createElement('script')
             utterances.setAttribute('src', 'https://utteranc.es/client.js')
             utterances.setAttribute('repo', "chen3283891376/chenblog")
-            utterances.setAttribute('issue-term', "pathname")
+            utterances.setAttribute('issue-term', "URL")
             utterances.setAttribute('theme', isDarkMode ? 'github-dark' : 'github-light')
             utterances.setAttribute('crossOrigin', 'anonymous')
             utterances.setAttribute('async', 'true')
