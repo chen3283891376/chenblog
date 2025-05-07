@@ -155,7 +155,7 @@ const App = () => {
                     onClick={() => {
                         setPage(page - 1);
                         history.pushState(null, null, `?page=${page - 1}`);
-                        document.title = `Page ${page} - Chen Blog`;
+                        document.title = `Page ${page - 1} - Chen Blog`;
                     }}
                 >Last Page</button>
                 <button
@@ -168,7 +168,7 @@ const App = () => {
                     onClick={() => {
                         setPage(page + 1);
                         history.pushState(null, null, `?page=${page + 1}`);
-                        document.title = `Page ${page} - Chen Blog`;
+                        document.title = `Page ${page + 1} - Chen Blog`;
                     }}
                 >Next Page</button>
             </div>
