@@ -119,7 +119,9 @@ const App = () => {
 
             el.parentNode.insertBefore(head_el, el);
         });
+    }, [pageComponent]);
 
+    React.useEffect(() => {
         const comments = document.querySelector('.comments');
         if (comments) {
             comments.innerHTML = '';
@@ -133,7 +135,7 @@ const App = () => {
             utterances.setAttribute('async', 'true')
             comments.appendChild(utterances)
         }
-    }, [pageComponent]);
+    }, [pageComponent, isDarkMode]);
 
     return (
         <div>
