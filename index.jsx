@@ -11,8 +11,8 @@ const App = () => {
 
     if (!params.get('page')) {
         history.pushState(null, null, `?page=1`);
-        document.title = `Page 1 - Chen Blog`;
     }
+    document.title = `Page ${page} - Chen Blog`;
 
     React.useEffect(() => {
         const storedMode = localStorage.getItem('theme');
