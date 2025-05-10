@@ -3,41 +3,12 @@
 
 // import { lineNumbersBlock } from "./js/highlight-line-number";
 
-const Utterances = ({ repo, issueTerm, theme }) => {
-    const commentsContainer = React.useRef(null);
-  
-    React.useEffect(() => {
-        if (!commentsContainer.current) return;
-    
-        commentsContainer.current.innerHTML = '';
-    
-        const utterances = document.createElement('script');
-        utterances.setAttribute('src', 'https://utteranc.es/client.js');
-        utterances.setAttribute('repo', repo);
-        utterances.setAttribute('issue-term', issueTerm);
-        utterances.setAttribute('theme', theme);
-        utterances.setAttribute('crossorigin', 'anonymous');
-        utterances.setAttribute('async', true);
-        
-        commentsContainer.current.appendChild(utterances);
-        
-        return () => {
-        if (commentsContainer.current) {
-            commentsContainer.current.innerHTML = '';
-        }
-        };
-    }, [repo, issueTerm, theme]);
-
-    return <div ref={commentsContainer}></div>;
-};
-
 const App = () => {
     const params = new URLSearchParams(window.location.search);
     const [page, setPage] = React.useState(Number(params.get('page')) || 1);
     const [show_left, setShowLeft] = React.useState(true);
     const [show_right, setShowRight] = React.useState(true);
     const [pageComponent, setPageComponent] = React.useState(<div>Loading...</div>);
-    const [utterances, setUtterances] = React.useState(<div>Loading...</div>);
     const [isDarkMode, setIsDarkMode] = React.useState(false);
 
     if (!params.get('page')) {
@@ -164,13 +135,15 @@ const App = () => {
         if (comments) {
             comments.innerHTML = '';
 
-            setUtterances(
-                <Utterances
-                    repo="chen3283891376/chenblog"
-                    issueTerm="title"
-                    theme={isDarkMode ? 'github-dark' : 'github-light'}
-                />
-            );
+            const utterances = document.createElement('script');
+            utterances.setAttribute('src', 'https://utteranc.es/client.js');
+            utterances.setAttribute('repo', repo);
+            utterances.setAttribute('issue-term', issueTerm);
+            utterances.setAttribute('theme', theme);
+            utterances.setAttribute('crossorigin', 'anonymous');
+            utterances.setAttribute('async', true);
+
+            comments.appendChild(utterances);
         }
     }, [pageComponent]);
 
@@ -217,14 +190,7 @@ const App = () => {
                 >Next Page</button>
             </div>
             <br /><br />
-            <div className="comments" id="comments">
-                {/* <Utterances
-                    repo="chen3283891376/chenblog"
-                    issueTerm="title"
-                    theme={isDarkMode ? 'github-dark' : 'github-light'}
-                /> */}
-                {utterances}
-            </div>
+            <div className="comments" id="comments"></div>
             {/* <footer>
                 <div id='gitalk-container' style={{ margin: "auto", maxWidth: "600px" }}></div>
             </footer> */}
