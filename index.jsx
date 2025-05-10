@@ -99,7 +99,7 @@ const App = () => {
         document.querySelectorAll('.marked pre code').forEach(el => {
             window.LineNumbers.lineNumbersBlock(el);
 
-            const lang = el.className.replace('language-', '').replace(' hljs', '').replace('hljs- ', '');
+            const lang = el.className.replace('language-', '').replace(' hljs', '').replace('hljs ', '');
             let head_el = document.createElement('div');
             head_el.className = 'code-header';
 
