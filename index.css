@@ -1,3 +1,4 @@
+/* 全局变量定义 */
 :root {
     --primary-color: #007BFF;
     --secondary-color: #0056b3;
@@ -38,11 +39,11 @@
     --pretty-button-text-color: #000;
     --link-color: #61dafb;
     --link-hover-color: #4ec9b0;
-    /* 新增或调整文本颜色 */
     --heading-text-color: #fff;
     --katex-text-color: #fff;
 }
 
+/* 全局样式 */
 html,
 body {
     height: 100%;
@@ -53,12 +54,8 @@ body {
 }
 
 /* 通用间距类 */
-.left-margin-6px {
-    margin-left: 6px;
-}
-
-.right-margin-6px {
-    margin-right: 6px;
+.margin-6px {
+    margin: 0 6px;
 }
 
 .font-size-20px {
@@ -95,8 +92,7 @@ body {
     padding: 30px;
     padding-bottom: 36px;
     max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     background-color: var(--content-background-color);
     min-height: calc(100% - 122px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -106,10 +102,18 @@ body {
 /* 引用块 */
 blockquote {
     border-left: 6px solid var(--blockquote-border-color);
-    padding-left: 15px;
+    padding: 15px;
     background-color: var(--blockquote-background-color);
     margin: 20px 0;
     border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+blockquote p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text-color);
 }
 
 /* 图片 */
@@ -121,6 +125,10 @@ img {
 }
 
 /* 表格元素 */
+table {
+    border-collapse: collapse;
+}
+
 tbody,
 td,
 tfoot,
@@ -140,7 +148,7 @@ tr {
 
 .marked code {
     margin: 0.2em;
-    /* padding: 0.1em 0.2em; */
+    padding: 0.1em 0.2em;
     tab-size: 4;
     -moz-tab-size: 4;
     background-color: var(--inline-code-background-color);
@@ -197,22 +205,7 @@ tr {
     background-color: transparent;
 }
 
-.marked blockquote {
-    background: var(--blockquote-background-color);
-    border-left: 6px solid var(--blockquote-border-color);
-    padding: 15px;
-    margin: 20px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-}
-
-.marked blockquote p {
-    margin: 0;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: var(--text-color);
-}
-
+/* 链接样式 */
 .marked a {
     color: var(--link-color);
     text-decoration: underline;
@@ -223,6 +216,7 @@ tr {
     color: var(--link-hover-color);
 }
 
+/* 按钮样式 */
 .pretty-button {
     background-color: var(--pretty-button-background-color);
     height: 48px;
@@ -244,6 +238,7 @@ tr {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* 深色模式下的标题和段落样式 */
 .dark-mode h1,
 .dark-mode h2,
 .dark-mode h3,
@@ -261,6 +256,7 @@ tr {
     color: var(--text-color);
 }
 
+/* 代码块头部和复制按钮样式 */
 .code-header {
     padding: 5px 5px 5px 10px;
     overflow: auto;
@@ -268,7 +264,7 @@ tr {
 
 .copy-btn {
     float: right;
-    border:  none;
+    border: none;
     background-color: var(--primary-color);
     color: #fff;
     padding: 5px 10px;
@@ -281,6 +277,7 @@ tr {
     background-color: var(--secondary-color);
 }
 
+/* Utterances 评论框样式 */
 .utterances {
     position: relative;
     box-sizing: border-box;
@@ -288,9 +285,9 @@ tr {
     max-width: 760px;
     height: auto;
     max-height: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
+
 .utterances-frame {
     color-scheme: light;
     position: absolute;
@@ -301,4 +298,13 @@ tr {
     max-width: 100%;
     height: 100%;
     border: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .content-container {
+        padding: 20px;
+        max-width: 100%;
+        border-radius: 0;
+    }
 }
