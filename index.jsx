@@ -97,6 +97,8 @@ const App = () => {
         }
 
         document.querySelectorAll('.marked code').forEach(el => {
+            window.LineNumbers.lineNumbersBlock(el);
+
             const lang = el.className.replace('language-', '').replace(' hljs', '');
             let head_el = document.createElement('div');
             head_el.className = 'code-header';
