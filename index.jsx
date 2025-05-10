@@ -85,7 +85,7 @@ const App = () => {
             renderMathInElement(document.body, {
                 delimiters: [
                     { left: '$$', right: '$$', display: true },
-                    { left: '$', right: '$', display: true },
+                    { left: '$', right: '$', display: false },
                     { left: '\\(', right: '\\)', display: false },
                     { left: '\\[', right: '\\]', display: true }
                 ],
@@ -99,12 +99,16 @@ const App = () => {
         document.querySelectorAll('.marked code').forEach(el => {
             window.LineNumbers.lineNumbersBlock(el);
 
-            const lang = el.className.replace('language-', '').replace(' hljs', '');
+            const lang = el.className.replace('language-', '').replace(' hljs', '').replace('hljs- ', '');
             let head_el = document.createElement('div');
             head_el.className = 'code-header';
 
             let lang_el = document.createElement('span');
-            lang_el.innerText = lang;
+            if (lang === 'undefined') {
+                lang_el.innerText = 'Plain Text';
+            } else {
+                lang_el.innerText = lang;
+            }
             head_el.appendChild(lang_el);
 
             let copy_el = document.createElement('button');
