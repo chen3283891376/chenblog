@@ -96,7 +96,7 @@ const App = () => {
             hljs.highlightAll();
         }
 
-        document.querySelectorAll('.marked code').forEach(el => {
+        document.querySelectorAll('.marked pre code').forEach(el => {
             window.LineNumbers.lineNumbersBlock(el);
 
             const lang = el.className.replace('language-', '').replace(' hljs', '').replace('hljs- ', '');
