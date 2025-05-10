@@ -308,3 +308,18 @@ tr {
         border-radius: 0;
     }
 }
+
+/* 滚动条样式 */
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+}
