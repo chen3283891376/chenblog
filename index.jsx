@@ -10,7 +10,7 @@ const Utterances = ({ repo, issueTerm, theme }) => {
         commentsContainer.current.innerHTML = '';
     
         const utterances = document.createElement('script');
-        utterances.setAttribute('src', 'https://fastly.jsdelivr.net/npm/utterances@0.1.3/client.js');
+        utterances.setAttribute('src', 'https://utteranc.es/client.js');
         utterances.setAttribute('repo', repo);
         utterances.setAttribute('issue-term', issueTerm);
         utterances.setAttribute('theme', theme);
