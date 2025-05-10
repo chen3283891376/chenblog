@@ -37,6 +37,7 @@ const App = () => {
     const [show_left, setShowLeft] = React.useState(true);
     const [show_right, setShowRight] = React.useState(true);
     const [pageComponent, setPageComponent] = React.useState(<div>Loading...</div>);
+    const [utterances, setUtterances] = React.useState(<div>Loading...</div>);
     const [isDarkMode, setIsDarkMode] = React.useState(false);
 
     if (!params.get('page')) {
@@ -165,13 +166,13 @@ const App = () => {
         if (comments) {
             comments.innerHTML = '';
 
-            comments.appendChild(
+            setUtterances(
                 <Utterances
                     repo="chen3283891376/chenblog"
                     issueTerm="title"
                     theme={isDarkMode ? 'github-dark' : 'github-light'}
                 />
-            )
+            );
         }
     }, [pageComponent]);
 
@@ -219,11 +220,12 @@ const App = () => {
             </div>
             <br /><br />
             <div className="comments" id="comments">
-                <Utterances
+                {/* <Utterances
                     repo="chen3283891376/chenblog"
                     issueTerm="title"
                     theme={isDarkMode ? 'github-dark' : 'github-light'}
-                />
+                /> */}
+                {utterances}
             </div>
             {/* <footer>
                 <div id='gitalk-container' style={{ margin: "auto", maxWidth: "600px" }}></div>
