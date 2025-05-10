@@ -1,6 +1,8 @@
 // import React from "react";
 // import ReactDOM from "react-dom";
 
+// import { lineNumbersBlock } from "./js/highlight-line-number";
+
 const Utterances = ({ repo, issueTerm, theme }) => {
     const commentsContainer = React.useRef(null);
   
@@ -134,6 +136,8 @@ const App = () => {
         }
 
         document.querySelectorAll('.marked code').forEach(el => {
+            lineNumbersBlock(el);
+
             const lang = el.className.replace('language-', '').replace(' hljs', '');
             let head_el = document.createElement('div');
             head_el.className = 'code-header';
