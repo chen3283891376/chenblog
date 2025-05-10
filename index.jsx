@@ -85,6 +85,15 @@ const App = () => {
                 setShowRight(true);
             }
 
+            if (page < 1 || page > data.length) {
+                setPageComponent(<div>
+                    <h1>404</h1>
+                    <p>你来到了没有知识的荒原 🙊</p>
+                </div>);
+                setShowLeft(false);
+                setShowRight(false);
+            }
+
             setPageComponent(
                 <div className="marked" id="content" style={{
                     width: '70%',
@@ -148,19 +157,18 @@ const App = () => {
             el.parentNode.insertBefore(head_el, el);
         });
 
-        // const comments = document.querySelector('.comments');
-        // if (comments) {
-        //     comments.innerHTML = '';
+        const comments = document.querySelector('.comments');
+        if (comments) {
+            comments.innerHTML = '';
 
-        //     const utterances = document.createElement('script')
-        //     utterances.setAttribute('src', 'https://utteranc.es/client.js')
-        //     utterances.setAttribute('repo', "chen3283891376/chenblog")
-        //     utterances.setAttribute('issue-term', "title")
-        //     utterances.setAttribute('theme', isDarkMode ? 'github-dark' : 'github-light')
-        //     utterances.setAttribute('crossOrigin', 'anonymous')
-        //     utterances.setAttribute('async', 'true')
-        //     comments.appendChild(utterances)
-        // }
+            comments.appendChild(
+                <Utterances
+                    repo="chen3283891376/chenblog"
+                    issueTerm="title"
+                    theme={isDarkMode ? 'github-dark' : 'github-light'}
+                />
+            )
+        }
     }, [pageComponent]);
 
     return (
