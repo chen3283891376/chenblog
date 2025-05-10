@@ -1,6 +1,34 @@
 // import React from "react";
 // import ReactDOM from "react-dom";
 
+const Utterances = ({ repo, issueTerm, theme }) => {
+    const commentsContainer = React.useRef(null);
+  
+    React.useEffect(() => {
+        if (!commentsContainer.current) return;
+    
+        commentsContainer.current.innerHTML = '';
+    
+        const utterances = document.createElement('script');
+        utterances.setAttribute('src', 'https://utteranc.es/client.js');
+        utterances.setAttribute('repo', repo);
+        utterances.setAttribute('issue-term', issueTerm);
+        utterances.setAttribute('theme', theme);
+        utterances.setAttribute('crossorigin', 'anonymous');
+        utterances.setAttribute('async', true);
+        
+        commentsContainer.current.appendChild(utterances);
+        
+        return () => {
+        if (commentsContainer.current) {
+            commentsContainer.current.innerHTML = '';
+        }
+        };
+    }, [repo, issueTerm, theme]);
+
+    return <div ref={commentsContainer} className="utterances-container"></div>;
+};
+
 const App = () => {
     const params = new URLSearchParams(window.location.search);
     const [page, setPage] = React.useState(Number(params.get('page')) || 1);
@@ -119,23 +147,21 @@ const App = () => {
 
             el.parentNode.insertBefore(head_el, el);
         });
+
+        // const comments = document.querySelector('.comments');
+        // if (comments) {
+        //     comments.innerHTML = '';
+
+        //     const utterances = document.createElement('script')
+        //     utterances.setAttribute('src', 'https://utteranc.es/client.js')
+        //     utterances.setAttribute('repo', "chen3283891376/chenblog")
+        //     utterances.setAttribute('issue-term', "title")
+        //     utterances.setAttribute('theme', isDarkMode ? 'github-dark' : 'github-light')
+        //     utterances.setAttribute('crossOrigin', 'anonymous')
+        //     utterances.setAttribute('async', 'true')
+        //     comments.appendChild(utterances)
+        // }
     }, [pageComponent]);
-
-    React.useEffect(() => {
-        const comments = document.querySelector('.comments');
-        if (comments) {
-            comments.innerHTML = '';
-
-            const utterances = document.createElement('script')
-            utterances.setAttribute('src', 'https://utteranc.es/client.js')
-            utterances.setAttribute('repo', "chen3283891376/chenblog")
-            utterances.setAttribute('issue-term', "title")
-            utterances.setAttribute('theme', isDarkMode ? 'github-dark' : 'github-light')
-            utterances.setAttribute('crossOrigin', 'anonymous')
-            utterances.setAttribute('async', 'true')
-            comments.appendChild(utterances)
-        }
-    }, [pageComponent, isDarkMode]);
 
     return (
         <div>
@@ -180,7 +206,13 @@ const App = () => {
                 >Next Page</button>
             </div>
             <br /><br />
-            <div className="comments" id="comments"></div>
+            <div className="comments" id="comments">
+                <Utterances
+                    repo="chen3283891376/chenblog"
+                    issueTerm="title"
+                    theme={isDarkMode ? 'github-dark' : 'github-light'}
+                />
+            </div>
             {/* <footer>
                 <div id='gitalk-container' style={{ margin: "auto", maxWidth: "600px" }}></div>
             </footer> */}
