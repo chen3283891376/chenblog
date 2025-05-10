@@ -26,7 +26,7 @@ const Utterances = ({ repo, issueTerm, theme }) => {
         };
     }, [repo, issueTerm, theme]);
 
-    return <div ref={commentsContainer} className="utterances-container"></div>;
+    return <div ref={commentsContainer}></div>;
 };
 
 const App = () => {
