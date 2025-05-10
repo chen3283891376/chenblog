@@ -1,24 +1,6 @@
 // import React from "react";
 // import ReactDOM from "react-dom";
 
-// import { lineNumbersBlock } from "./js/highlight-line-number";
-
-const initComments = (isDarkMode) => {
-    const comments = document.querySelector('.comments');
-    if (comments) {
-        comments.innerHTML = '';
-
-        const utterances = document.createElement('script')
-        utterances.setAttribute('src', 'https://utteranc.es/client.js')
-        utterances.setAttribute('repo', "chen3283891376/chenblog")
-        utterances.setAttribute('issue-term', "title")
-        utterances.setAttribute('theme', isDarkMode ? 'github-dark' : 'github-light')
-        utterances.setAttribute('crossOrigin', 'anonymous')
-        utterances.setAttribute('async', 'true')
-        comments.appendChild(utterances)
-    }
-};
-
 const App = () => {
     const params = new URLSearchParams(window.location.search);
     const [page, setPage] = React.useState(Number(params.get('page')) || 1);
@@ -73,16 +55,6 @@ const App = () => {
                 setShowRight(false);
             } else {
                 setShowRight(true);
-            }
-
-            if (page < 1 || page > data.length) {
-                setPageComponent(<div>
-                    <h1>404</h1>
-                    <p>你来到了没有知识的荒原 🙊</p>
-                </div>);
-                setShowLeft(false);
-                setShowRight(false);
-                return;
             }
 
             setPageComponent(
@@ -147,13 +119,23 @@ const App = () => {
 
             el.parentNode.insertBefore(head_el, el);
         });
-
-        initComments(isDarkMode);
     }, [pageComponent]);
 
     React.useEffect(() => {
-        initComments(isDarkMode);
-    }, [isDarkMode]);
+        const comments = document.querySelector('.comments');
+        if (comments) {
+            comments.innerHTML = '';
+
+            const utterances = document.createElement('script')
+            utterances.setAttribute('src', 'https://utteranc.es/client.js')
+            utterances.setAttribute('repo', "chen3283891376/chenblog")
+            utterances.setAttribute('issue-term', "title")
+            utterances.setAttribute('theme', isDarkMode ? 'github-dark' : 'github-light')
+            utterances.setAttribute('crossOrigin', 'anonymous')
+            utterances.setAttribute('async', 'true')
+            comments.appendChild(utterances)
+        }
+    }, [pageComponent, isDarkMode]);
 
     return (
         <div>
