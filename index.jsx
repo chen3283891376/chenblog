@@ -3,6 +3,22 @@
 
 // import { lineNumbersBlock } from "./js/highlight-line-number";
 
+const initComments = () => {
+    const comments = document.querySelector('.comments');
+    if (comments) {
+        comments.innerHTML = '';
+
+        const utterances = document.createElement('script')
+        utterances.setAttribute('src', 'https://utteranc.es/client.js')
+        utterances.setAttribute('repo', "chen3283891376/chenblog")
+        utterances.setAttribute('issue-term', "title")
+        utterances.setAttribute('theme', isDarkMode ? 'github-dark' : 'github-light')
+        utterances.setAttribute('crossOrigin', 'anonymous')
+        utterances.setAttribute('async', 'true')
+        comments.appendChild(utterances)
+    }
+};
+
 const App = () => {
     const params = new URLSearchParams(window.location.search);
     const [page, setPage] = React.useState(Number(params.get('page')) || 1);
@@ -66,6 +82,7 @@ const App = () => {
                 </div>);
                 setShowLeft(false);
                 setShowRight(false);
+                return;
             }
 
             setPageComponent(
@@ -131,21 +148,12 @@ const App = () => {
             el.parentNode.insertBefore(head_el, el);
         });
 
-        const comments = document.querySelector('.comments');
-        if (comments) {
-            comments.innerHTML = '';
-
-            const utterances = document.createElement('script');
-            utterances.setAttribute('src', 'https://utteranc.es/client.js');
-            utterances.setAttribute('repo', repo);
-            utterances.setAttribute('issue-term', issueTerm);
-            utterances.setAttribute('theme', theme);
-            utterances.setAttribute('crossorigin', 'anonymous');
-            utterances.setAttribute('async', true);
-
-            comments.appendChild(utterances);
-        }
+        initComments();
     }, [pageComponent]);
+
+    React.useEffect(() => {
+        initComments();
+    }, [isDarkMode]);
 
     return (
         <div>
