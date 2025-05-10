@@ -3,7 +3,7 @@
 
 // import { lineNumbersBlock } from "./js/highlight-line-number";
 
-const initComments = () => {
+const initComments = (isDarkMode) => {
     const comments = document.querySelector('.comments');
     if (comments) {
         comments.innerHTML = '';
@@ -148,11 +148,11 @@ const App = () => {
             el.parentNode.insertBefore(head_el, el);
         });
 
-        initComments();
+        initComments(isDarkMode);
     }, [pageComponent]);
 
     React.useEffect(() => {
-        initComments();
+        initComments(isDarkMode);
     }, [isDarkMode]);
 
     return (
