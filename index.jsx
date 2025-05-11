@@ -218,7 +218,7 @@ const App = () => {
             </div>
             <br />
             <br />
-            <p>{hitokoto()}</p>
+            <p>{hirokoto().then(data => data)}</p>
             <div className="comments" id="comments"></div>
         </div>
     );
