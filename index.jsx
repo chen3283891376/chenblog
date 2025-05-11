@@ -71,14 +71,15 @@ const App = () => {
                     className="marked"
                     id="content"
                     style={{
-                        width: '70%',
+                        width: '80%',
                         marginLeft: 'auto',
                         marginRight: 'auto'
                     }}
                 >
                     <h3
                         style={{
-                            textAlign: 'center'
+                            // textAlign: 'center'
+                            marginLeft: '10px',
                         }}
                     >
                         Article: {data[page - 1].name}
@@ -189,7 +190,7 @@ const App = () => {
                 href={`https://fastly.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/stackoverflow-${isDarkMode ? 'dark' : 'light'}.min.css`}
                 crossOrigin="anonymous"
             />
-            <h1 style={{ textAlign: 'center' }}>Chen Blog</h1>
+            <h1 style={{ marginLeft: 'calc(10% + 10px)' }}>Chen Blog</h1>
             <button
                 className="pretty-button"
                 style={{ position: 'absolute', top: '10px', right: '10px' }}
