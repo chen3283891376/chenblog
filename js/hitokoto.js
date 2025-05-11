@@ -1,12 +1,17 @@
-const hitokoto = async () => {
-    let hitokoto = "加载中...";
-    const response = await fetch('https://v1.hitokoto.cn/?c=k&charset=utf-8');
-    if (!response.ok) {
-        return "谨以此献给学而思最好的那段时光, 以及我们失去的一切。 —— 凌";
-    }
-    const data = await response.json();
-    hitokoto = `${data.hitokoto} —— ${data.from_who}「${data.from}」`;
-    return hitokoto;
+const Hitokoto = [
+    '谨以此献给学而思最好的那段时光, 以及我们失去的一切。 —— 凌',
+    '大雨之后，是漫长的潮湿。',
+    '对于我们的幸福来说，别人的看法在本质上来讲并不十分重要。 —— 叔本华',
+    '人生的意义在于，在某个时刻，我们突然意识到，原来我们一直以来都在忙着忙着，忙着忙着……',
+    '生命中曾经有过的所有灿烂，原来终究，都需要用寂寞来偿还。 —— 《百年孤独》',
+    '生命如同寓言，其价值不在于长短，而在于内容。 —— 塞涅卡「塞涅卡」',
+    '有思想，也有忧伤和理想，这才是生活。 —— 安思妥耶夫斯基',
+    '但此刻，天上地下，只剩下他一人。鸦已栖定。落日已灭亡。 —— 余光中'
+]
+
+const hitokoto = () => {
+    let hitokoto_text = Hitokoto[Math.floor(Math.random() * Hitokoto.length)];
+    return hitokoto_text;
 }
 (function() {
     window.hitokoto = hitokoto;

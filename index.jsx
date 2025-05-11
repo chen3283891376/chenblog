@@ -218,7 +218,7 @@ const App = () => {
             </div>
             <br />
             <br />
-            <p>{hitokoto().then(data => data)}</p>
+            <p style={{ textAlign: 'center' }}>{hitokoto()}</p>
             <div className="comments" id="comments"></div>
         </div>
     );
