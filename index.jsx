@@ -130,7 +130,7 @@ const App = () => {
 
             el.parentNode.insertBefore(head_el, el);
         });
-        
+
         const comments = document.querySelector('.comments');
         if (comments) {
             comments.innerHTML = '';
@@ -180,9 +180,11 @@ const App = () => {
                 >
                     Article: {title}
                 </h3>
-                <div style={{
-                    display: 'flex',
-                }}>
+                <div
+                    style={{
+                        display: 'flex'
+                    }}
+                >
                     <div
                         style={{
                             flex: 8,
@@ -218,16 +220,33 @@ const App = () => {
                         }}
                         ref={async ref => {
                             if (ref) {
-                                const response = await fetch('./asserts/about.md');
+                                const response =
+                                    await fetch('./asserts/about.md');
                                 const about = await response.text();
                                 const aboutHtml = markdownit().render(about);
                                 ref.innerHTML = DOMPurify.sanitize(aboutHtml);
                                 renderMathInElement(ref, {
                                     delimiters: [
-                                        { left: '$$', right: '$$', display: true },
-                                        { left: '$', right: '$', display: false },
-                                        { left: '\\(', right: '\\)', display: false },
-                                        { left: '\\[', right: '\\]', display: true }
+                                        {
+                                            left: '$$',
+                                            right: '$$',
+                                            display: true
+                                        },
+                                        {
+                                            left: '$',
+                                            right: '$',
+                                            display: false
+                                        },
+                                        {
+                                            left: '\\(',
+                                            right: '\\)',
+                                            display: false
+                                        },
+                                        {
+                                            left: '\\[',
+                                            right: '\\]',
+                                            display: true
+                                        }
                                     ],
                                     throwOnError: false
                                 });
