@@ -4,6 +4,7 @@
 // import markdownit from 'markdown-it';
 // import renderMathInElement from 'katex/dist/contrib/auto-render';
 // import hljs from 'highlight.js';
+// import hitoronto from './js/hitokoto.js';
 
 const App = () => {
     const params = new URLSearchParams(window.location.search);
@@ -217,10 +218,8 @@ const App = () => {
             </div>
             <br />
             <br />
+            <p>{hitoronto()}</p>
             <div className="comments" id="comments"></div>
-            {/* <footer>
-                <div id='gitalk-container' style={{ margin: "auto", maxWidth: "600px" }}></div>
-            </footer> */}
         </div>
     );
 };
