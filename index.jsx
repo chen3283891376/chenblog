@@ -4,7 +4,7 @@
 // import markdownit from 'markdown-it';
 // import renderMathInElement from 'katex/dist/contrib/auto-render';
 // import hljs from 'highlight.js';
-// import hitoronto from './js/hitokoto.js';
+// import hitokoto from './js/hitokoto.js';
 
 const App = () => {
     const params = new URLSearchParams(window.location.search);
@@ -218,7 +218,7 @@ const App = () => {
             </div>
             <br />
             <br />
-            <p>{hitoronto()}</p>
+            <p>{hitokoto()}</p>
             <div className="comments" id="comments"></div>
         </div>
     );
