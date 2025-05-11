@@ -42,6 +42,9 @@ const App = () => {
     };
 
     React.useEffect(() => {
+        const loader = document.querySelector('.loader');
+        loader.classList.remove('hidden');
+
         let ignore = false;
         const func = async () => {
             const marked = markdownit();
@@ -108,7 +111,9 @@ const App = () => {
                 </div>
             );
         };
-        if (!ignore) func().then(() => null);
+        if (!ignore) func().then(() => {
+            loader.classList.add('hidden');
+        });
         return () => {
             ignore = true;
         };
@@ -231,9 +236,7 @@ const App = () => {
                     Next Page
                 </button>
             </div>
-            <br />
-            <br />
-            <p style={{ textAlign: 'center' }}>{hitokoto()}</p>
+            <p className="hitokoto">{hitokoto()}</p>
         </div>
     );
 };
