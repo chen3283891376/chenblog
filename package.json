@@ -1,0 +1,29 @@
+{
+    "name": "chenblog",
+    "description": "A blog system based on Laravel",
+    "keywords": [
+        "blog"
+    ],
+    "homepage": "https://github.com/chen3283891376/chenblog#readme",
+    "scripts": {
+        "format": "prettier --write \"**/*.{js,json,css,html,jsx}\""
+    },
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/chen3283891376/chenblog.git"
+    },
+    "author": {
+        "name": "chen3283891376",
+        "email": "3283891376@qq.com"
+    },
+    "dependencies": {
+        "react": "^19.1.0",
+        "react-dom": "^19.1.0",
+        "dompurify": "^3.2.5",
+        "markdown-it": "^14.1.0",
+        "katex": "^0.16.22",
+        "highlight.js": "^11.11.1",
+        "prettier": "^3.5.3"
+    }
+}

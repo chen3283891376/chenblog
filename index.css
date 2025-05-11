@@ -1,6 +1,6 @@
 /* 全局变量定义 */
 :root {
-    --primary-color: #007BFF;
+    --primary-color: #007bff;
     --secondary-color: #0056b3;
     --background-color: #f0f4f7;
     --content-background-color: #fff;
@@ -10,13 +10,13 @@
     --code-block-background-color: #282c34;
     --code-block-text-color: #abb2bf;
     --blockquote-background-color: #f8f9fa;
-    --blockquote-border-color: #007BFF;
+    --blockquote-border-color: #007bff;
     --table-border-color: #e0e0e0;
     --time-container-color: #888;
-    --pretty-button-background-color: #007BFF;
+    --pretty-button-background-color: #007bff;
     --pretty-button-hover-background-color: #0056b3;
     --pretty-button-text-color: #fff;
-    --link-color: #007BFF;
+    --link-color: #007bff;
     --link-hover-color: #0056b3;
 }
 
@@ -142,7 +142,9 @@ tr {
 /* 代码块相关 */
 .marked code,
 .marked pre {
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family:
+        SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+        'Courier New', monospace;
     background-color: var(--code-background-color);
 }
 
@@ -162,7 +164,7 @@ tr {
     border-radius: 5px;
 }
 
-.marked pre>code {
+.marked pre > code {
     font-size: unset;
     margin: 0;
     white-space: pre;
@@ -178,8 +180,8 @@ tr {
 .hljs-ln,
 .hljs-ln-numbers,
 .hljs-ln-code,
-.hljs-ln>tbody,
-.hljs-ln>tbody>tr {
+.hljs-ln > tbody,
+.hljs-ln > tbody > tr {
     border: none;
 }
 
@@ -187,12 +189,12 @@ tr {
     text-align: center;
     /* font-family: monospace; */
     border-right: 2px solid #555;
-    padding-right: 5px!important;
+    padding-right: 5px !important;
     color: #888;
 }
 
 .hljs-ln-code {
-    padding-left: 5px!important;
+    padding-left: 5px !important;
 }
 
 .time-container {
@@ -230,7 +232,9 @@ tr {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 8px;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    transition:
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .pretty-button:hover {

@@ -10,7 +10,9 @@ const App = () => {
     const [page, setPage] = React.useState(Number(params.get('page')) || 1);
     const [show_left, setShowLeft] = React.useState(true);
     const [show_right, setShowRight] = React.useState(true);
-    const [pageComponent, setPageComponent] = React.useState(<div>Loading...</div>);
+    const [pageComponent, setPageComponent] = React.useState(
+        <div>Loading...</div>
+    );
     const [isDarkMode, setIsDarkMode] = React.useState(false);
 
     if (!params.get('page')) {
@@ -46,7 +48,9 @@ const App = () => {
             const response = await fetch(`./article.json`);
             const data = await response.json();
 
-            const contentResponse = await fetch(`./posts/${data[page - 1].file}`);
+            const contentResponse = await fetch(
+                `./posts/${data[page - 1].file}`
+            );
             const content = await contentResponse.text();
             const contentHtml = marked.render(content);
 
@@ -62,19 +66,29 @@ const App = () => {
             }
 
             setPageComponent(
-                <div className="marked" id="content" style={{
-                    width: '70%',
-                    marginLeft: 'auto',
-                    marginRight: 'auto',
-                }}>
-                    <h3 style={{
-                        textAlign: 'center',
-                    }}>Article: {data[page - 1].name}</h3>
-                    <p ref={(ref) => {
-                        if (ref) {
-                            ref.innerHTML = DOMPurify.sanitize(contentHtml);
-                        }
-                    }}></p>
+                <div
+                    className="marked"
+                    id="content"
+                    style={{
+                        width: '70%',
+                        marginLeft: 'auto',
+                        marginRight: 'auto'
+                    }}
+                >
+                    <h3
+                        style={{
+                            textAlign: 'center'
+                        }}
+                    >
+                        Article: {data[page - 1].name}
+                    </h3>
+                    <p
+                        ref={ref => {
+                            if (ref) {
+                                ref.innerHTML = DOMPurify.sanitize(contentHtml);
+                            }
+                        }}
+                    ></p>
                 </div>
             );
         };
@@ -93,7 +107,7 @@ const App = () => {
                     { left: '\\(', right: '\\)', display: false },
                     { left: '\\[', right: '\\]', display: true }
                 ],
-                throwOnError: false,
+                throwOnError: false
             });
         }
         if (typeof hljs !== 'undefined') {
@@ -103,7 +117,10 @@ const App = () => {
         document.querySelectorAll('.marked pre code').forEach(el => {
             window.LineNumbers.lineNumbersBlock(el);
 
-            const lang = el.className.replace('language-', '').replace(' hljs', '').replace('hljs ', '');
+            const lang = el.className
+                .replace('language-', '')
+                .replace(' hljs', '')
+                .replace('hljs ', '');
             let head_el = document.createElement('div');
             head_el.className = 'code-header';
 
@@ -136,31 +153,36 @@ const App = () => {
         if (comments) {
             comments.innerHTML = '';
 
-            const utterances = document.createElement('script')
-            utterances.setAttribute('src', 'https://utteranc.es/client.js')
-            utterances.setAttribute('repo', "chen3283891376/chenblog")
-            utterances.setAttribute('issue-term', "title")
-            utterances.setAttribute('theme', isDarkMode ? 'github-dark' : 'github-light')
-            utterances.setAttribute('crossOrigin', 'anonymous')
-            utterances.setAttribute('async', 'true')
-            comments.appendChild(utterances)
+            const utterances = document.createElement('script');
+            utterances.setAttribute('src', 'https://utteranc.es/client.js');
+            utterances.setAttribute('repo', 'chen3283891376/chenblog');
+            utterances.setAttribute('issue-term', 'title');
+            utterances.setAttribute(
+                'theme',
+                isDarkMode ? 'github-dark' : 'github-light'
+            );
+            utterances.setAttribute('crossOrigin', 'anonymous');
+            utterances.setAttribute('async', 'true');
+            comments.appendChild(utterances);
         }
     }, [pageComponent, isDarkMode]);
 
     return (
         <div>
-            <link rel="stylesheet" href={`https://fastly.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/stackoverflow-${isDarkMode ? 'dark' : 'light'}.min.css`} crossOrigin="anonymous" />
+            <link
+                rel="stylesheet"
+                href={`https://fastly.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/stackoverflow-${isDarkMode ? 'dark' : 'light'}.min.css`}
+                crossOrigin="anonymous"
+            />
             <h1 style={{ textAlign: 'center' }}>Chen Blog</h1>
             <button
                 className="pretty-button"
-                style={{ position: 'absolute', top: "10px", right: "10px" }}
+                style={{ position: 'absolute', top: '10px', right: '10px' }}
                 onClick={toggleTheme}
             >
                 {!isDarkMode ? 'Light' : 'Dark'}
             </button>
-            <div>
-                {pageComponent}
-            </div>
+            <div>{pageComponent}</div>
             <div>
                 <button
                     className="pretty-button"
@@ -174,7 +196,9 @@ const App = () => {
                         history.pushState(null, null, `?page=${page - 1}`);
                         document.title = `Page ${page - 1} - Chen Blog`;
                     }}
-                >Last Page</button>
+                >
+                    Last Page
+                </button>
                 <button
                     className="pretty-button"
                     style={{
@@ -187,9 +211,12 @@ const App = () => {
                         history.pushState(null, null, `?page=${page + 1}`);
                         document.title = `Page ${page + 1} - Chen Blog`;
                     }}
-                >Next Page</button>
+                >
+                    Next Page
+                </button>
             </div>
-            <br /><br />
+            <br />
+            <br />
             <div className="comments" id="comments"></div>
             {/* <footer>
                 <div id='gitalk-container' style={{ margin: "auto", maxWidth: "600px" }}></div>
@@ -198,5 +225,5 @@ const App = () => {
     );
 };
 
-const root = ReactDOM.createRoot(document.getElementById("app"));
+const root = ReactDOM.createRoot(document.getElementById('app'));
 root.render(<App />);

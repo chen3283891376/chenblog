@@ -1,4 +1,4 @@
-(function() {
+(function () {
     // From https://gitee.com/zhou-jian-guo/highlight_line_number
     // Readme: https://gitee.com/zhou-jian-guo/highlight_line_number/blob/master/README.md
     // (Chinese, you can translate it to English if you want)
@@ -6,36 +6,36 @@
     // 进行了适配性的修改
     // License: GPL-3.0
 
-    let TABLE_NAME = "hljs-ln",
-        LINE_NAME = "hljs-ln-line",
-        CODE_BLOCK_NAME = "hljs-ln-code",
-        NUMBERS_BLOCK_NAME = "hljs-ln-numbers",
-        NUMBER_LINE_NAME = "hljs-ln-n",
-        DATA_ATTR_NAME = "data-line-number",
+    let TABLE_NAME = 'hljs-ln',
+        LINE_NAME = 'hljs-ln-line',
+        CODE_BLOCK_NAME = 'hljs-ln-code',
+        NUMBERS_BLOCK_NAME = 'hljs-ln-numbers',
+        NUMBER_LINE_NAME = 'hljs-ln-n',
+        DATA_ATTR_NAME = 'data-line-number',
         BREAK_LINE_REGEXP = /\r\n|\r|\n/g;
 
     // 添加样式函数
     function addStyles() {
-        let css = document.createElement("style");
-        css.type = "text/css";
+        let css = document.createElement('style');
+        css.type = 'text/css';
         css.innerHTML = format(
-            ".{0}{border-collapse:collapse}" +
-            ".{0} td{padding:0}" +
-            ".{1}:before{content:attr({2})}",
+            '.{0}{border-collapse:collapse}' +
+                '.{0} td{padding:0}' +
+                '.{1}:before{content:attr({2})}',
             [TABLE_NAME, NUMBER_LINE_NAME, DATA_ATTR_NAME]
         );
-        document.getElementsByTagName("head")[0].appendChild(css);
+        document.getElementsByTagName('head')[0].appendChild(css);
     }
 
     // 页面加载完成后初始化行号
     function initLineNumbersOnLoad(options) {
         if (
-            document.readyState === "interactive" ||
-            document.readyState === "complete"
+            document.readyState === 'interactive' ||
+            document.readyState === 'complete'
         ) {
             documentReady(options);
         } else {
-            window.addEventListener("DOMContentLoaded", function () {
+            window.addEventListener('DOMContentLoaded', function () {
                 documentReady(options);
             });
         }
@@ -44,7 +44,9 @@
     // 文档加载完成后的处理
     function documentReady(options) {
         try {
-            let blocks = document.querySelectorAll("code.hljs,code.nohighlight");
+            let blocks = document.querySelectorAll(
+                'code.hljs,code.nohighlight'
+            );
 
             for (let i in blocks) {
                 // eslint-disable-next-line no-prototype-builtins
@@ -55,18 +57,18 @@
                 }
             }
         } catch (e) {
-            window.console.error("LineNumbers error: ", e);
+            window.console.error('LineNumbers error: ', e);
         }
     }
 
     // 检查是否为该代码块禁用了插件
     function isPluginDisabledForBlock(element) {
-        return element.classList.contains("nohljsln");
+        return element.classList.contains('nohljsln');
     }
 
     // 为单个代码块添加行号
     function lineNumbersBlock(element, options) {
-        if (typeof element !== "object") return;
+        if (typeof element !== 'object') return;
         element.innerHTML = lineNumbersInternal(element, options);
     }
 
@@ -84,23 +86,23 @@
         let lines = getLines(inputHtml);
 
         // 如果最后一行只包含换行符，则移除它
-        if (lines[lines.length - 1].trim() === "") {
+        if (lines[lines.length - 1].trim() === '') {
             lines.pop();
         }
 
         if (lines.length > 1 || options.singleLine) {
-            let html = "";
+            let html = '';
 
             for (let i = 0, l = lines.length; i < l; i++) {
                 html += format(
-                    "<tr>" +
-                    '<td class="{0} {1}" {3}="{5}">' +
-                    '<div class="{2}" {3}="{5}"></div>' +
-                    "</td>" +
-                    '<td class="{0} {4}" {3}="{5}">' +
-                    "{6}" +
-                    "</td>" +
-                    "</tr>",
+                    '<tr>' +
+                        '<td class="{0} {1}" {3}="{5}">' +
+                        '<div class="{2}" {3}="{5}"></div>' +
+                        '</td>' +
+                        '<td class="{0} {4}" {3}="{5}">' +
+                        '{6}' +
+                        '</td>' +
+                        '</tr>',
                     [
                         LINE_NAME,
                         NUMBERS_BLOCK_NAME,
@@ -108,7 +110,7 @@
                         DATA_ATTR_NAME,
                         CODE_BLOCK_NAME,
                         i + options.startFrom,
-                        lines[i].length > 0 ? lines[i] : " ",
+                        lines[i].length > 0 ? lines[i] : ' '
                     ]
                 );
             }
@@ -128,7 +130,7 @@
         options = options || {};
         return {
             singleLine: getSingleLineOption(options),
-            startFrom: getStartFromOption(element, options),
+            startFrom: getStartFromOption(element, options)
         };
     }
 
@@ -151,7 +153,7 @@
         }
 
         // 可以被覆盖，因为局部选项优先级更高
-        let value = getAttribute(element, "data-ln-start-from");
+        let value = getAttribute(element, 'data-ln-start-from');
         if (value !== null) {
             startFrom = toNumber(value, defaultValue);
         }
@@ -192,11 +194,11 @@
 
         let lines = getLines(element.innerHTML);
 
-        for (var i = 0, result = ""; i < lines.length; i++) {
-            let lineText = lines[i].length > 0 ? lines[i] : " ";
+        for (var i = 0, result = ''; i < lines.length; i++) {
+            let lineText = lines[i].length > 0 ? lines[i] : ' ';
             result += format('<span class="{0}">{1}</span>\n', [
                 className,
-                lineText,
+                lineText
             ]);
         }
 
