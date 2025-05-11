@@ -6,6 +6,18 @@
 // import hljs from 'highlight.js';
 // import hitokoto from './js/hitokoto.js';
 
+const render_katex = () => {
+    renderMathInElement(document.body, {
+        delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false },
+            { left: '\\(', right: '\\)', display: false },
+            { left: '\\[', right: '\\]', display: true }
+        ],
+        throwOnError: false
+    });
+};
+
 const App = () => {
     const params = new URLSearchParams(window.location.search);
     const [page, setPage] = React.useState(Number(params.get('page')) || 1);
@@ -83,20 +95,8 @@ const App = () => {
     }, [page]);
 
     React.useEffect(() => {
-        if (typeof renderMathInElement !== 'undefined') {
-            renderMathInElement(document.body, {
-                delimiters: [
-                    { left: '$$', right: '$$', display: true },
-                    { left: '$', right: '$', display: false },
-                    { left: '\\(', right: '\\)', display: false },
-                    { left: '\\[', right: '\\]', display: true }
-                ],
-                throwOnError: false
-            });
-        }
-        if (typeof hljs !== 'undefined') {
-            hljs.highlightAll();
-        }
+        render_katex();
+        hljs.highlightAll();
 
         document.querySelectorAll('.marked pre code').forEach(el => {
             window.LineNumbers.lineNumbersBlock(el);
@@ -225,31 +225,7 @@ const App = () => {
                                 const about = await response.text();
                                 const aboutHtml = markdownit().render(about);
                                 ref.innerHTML = DOMPurify.sanitize(aboutHtml);
-                                renderMathInElement(ref, {
-                                    delimiters: [
-                                        {
-                                            left: '$$',
-                                            right: '$$',
-                                            display: true
-                                        },
-                                        {
-                                            left: '$',
-                                            right: '$',
-                                            display: false
-                                        },
-                                        {
-                                            left: '\\(',
-                                            right: '\\)',
-                                            display: false
-                                        },
-                                        {
-                                            left: '\\[',
-                                            right: '\\]',
-                                            display: true
-                                        }
-                                    ],
-                                    throwOnError: false
-                                });
+                                render_katex();
                             }
                         }}
                     />
