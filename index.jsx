@@ -83,13 +83,27 @@ const App = () => {
                     >
                         Article: {data[page - 1].name}
                     </h3>
-                    <p
+                    <div
+                        style={{
+                            border: '1px solid #ccc',
+                            borderRadius: '5px',
+                            padding: '20px',
+                            margin: '10px auto',
+                            height: 'calc(100vh - 270px)',
+                            overflow: 'auto',
+                            boxSizeing: 'border-box',
+                            position: 'relative'
+                        }}
                         ref={ref => {
                             if (ref) {
                                 ref.innerHTML = DOMPurify.sanitize(contentHtml);
+
+                                const comments = document.createElement('div');
+                                comments.className = 'comments';
+                                ref.appendChild(comments);
                             }
                         }}
-                    ></p>
+                    ></div>
                 </div>
             );
         };
@@ -219,7 +233,6 @@ const App = () => {
             <br />
             <br />
             <p style={{ textAlign: 'center' }}>{hitokoto()}</p>
-            <div className="comments" id="comments"></div>
         </div>
     );
 };
