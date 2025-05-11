@@ -130,9 +130,7 @@ const App = () => {
 
             el.parentNode.insertBefore(head_el, el);
         });
-    }, [contentHTML]);
-
-    React.useEffect(() => {
+        
         const comments = document.querySelector('.comments');
         if (comments) {
             comments.innerHTML = '';
