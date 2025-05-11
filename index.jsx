@@ -1,5 +1,9 @@
 // import React from "react";
-// import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom/client";
+// import DOMPurify from 'dompurify';
+// import markdownit from 'markdown-it';
+// import renderMathInElement from 'katex/dist/contrib/auto-render';
+// import hljs from 'highlight.js';
 
 const App = () => {
     const params = new URLSearchParams(window.location.search);
@@ -37,7 +41,7 @@ const App = () => {
     React.useEffect(() => {
         let ignore = false;
         const func = async () => {
-            const marked = window.markdownit();
+            const marked = markdownit();
 
             const response = await fetch(`./article.json`);
             const data = await response.json();
@@ -68,13 +72,13 @@ const App = () => {
                     }}>Article: {data[page - 1].name}</h3>
                     <p ref={(ref) => {
                         if (ref) {
-                            ref.innerHTML = contentHtml;
+                            ref.innerHTML = DOMPurify.sanitize(contentHtml);
                         }
                     }}></p>
                 </div>
             );
         };
-        if (!ignore) func();
+        if (!ignore) func().then(() => null);
         return () => {
             ignore = true;
         };
@@ -115,7 +119,7 @@ const App = () => {
             copy_el.className = 'copy-btn';
             copy_el.innerText = 'Copy';
             copy_el.addEventListener('click', () => {
-                navigator.clipboard.writeText(el.outerText);
+                navigator.clipboard.writeText(el.outerText).then(() => null);
                 copy_el.innerText = 'Copied!';
                 setTimeout(() => {
                     copy_el.innerText = 'Copy';
