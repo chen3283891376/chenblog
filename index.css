@@ -220,7 +220,7 @@ tr {
 /* 按钮样式 */
 .pretty-button {
     background-color: var(--pretty-button-background-color);
-    height: 48px;
+    height: 42px;
     color: var(--pretty-button-text-color);
     border: none;
     padding: 12px 24px;
@@ -234,6 +234,7 @@ tr {
     transition:
         background-color 0.3s ease,
         box-shadow 0.3s ease;
+    position: absolute;
 }
 
 .pretty-button:hover {
@@ -334,7 +335,7 @@ tr {
 /* 一言样式 */
 .hitokoto {
     text-align: center;
-    margin-top: 70px;
+    margin-top: 45px;
     font-style: italic;
 }
 
@@ -404,4 +405,54 @@ tr {
 .dark .theme-toggle-btn {
     background-color: rgba(30, 41, 59, 1);
     color: #fde047;
+}
+
+/* Nav 导航栏样式 */
+.blog-nav ul {
+    display: flex;
+    padding: 0;
+    list-style-type: none;
+    margin-left: calc(10% + 10px);
+}
+
+.blog-nav-links-item {
+    margin-right: 2em;
+    font-size: 1.1em;
+}
+
+.blog-nav-links-item a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.blog-nav-links-item a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background-color: gray;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease-out;
+}
+
+.blog-nav-links-item a:focus::after,
+.blog-nav-links-item a:hover::after {
+    transform: scaleX(1);
+}
+
+.blog-article-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.blog-article-list a {
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }

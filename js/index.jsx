@@ -2,21 +2,10 @@
 // import ReactDOM from "react-dom/client";
 // import DOMPurify from 'dompurify';
 // import markdownit from 'markdown-it';
-// import renderMathInElement from 'katex/dist/contrib/auto-render';
 // import hljs from 'highlight.js';
-// import hitokoto from './js/hitokoto.js';
-
-const render_katex = () => {
-    renderMathInElement(document.body, {
-        delimiters: [
-            { left: '$$', right: '$$', display: true },
-            { left: '$', right: '$', display: false },
-            { left: '\\(', right: '\\)', display: false },
-            { left: '\\[', right: '\\]', display: true }
-        ],
-        throwOnError: false
-    });
-};
+// import render_katex from './utils.js';
+// import NavBar from './components/NavBar';
+// import Footer from './components/Footer';
 
 const App = () => {
     const params = new URLSearchParams(window.location.search);
@@ -25,9 +14,8 @@ const App = () => {
     const [show_right, setShowRight] = React.useState(true);
     const [title, setTitle] = React.useState('');
     const [contentHTML, setContentHTML] = React.useState('');
+    const [articleList, setArticleList] = React.useState([]);
     const [isDarkMode, setIsDarkMode] = React.useState(false);
-
-    const hitokoto_text = hitokoto();
 
     if (!params.get('page')) {
         history.pushState(null, null, `?page=1`);
@@ -64,6 +52,7 @@ const App = () => {
 
             const response = await fetch(`./article.json`);
             const data = await response.json();
+            setArticleList(data);
 
             const articleResponse = await fetch(
                 `./posts/${data[page - 1].file}`
@@ -156,15 +145,8 @@ const App = () => {
                 href={`https://fastly.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/stackoverflow-${isDarkMode ? 'dark' : 'light'}.min.css`}
                 crossOrigin="anonymous"
             />
-            <h1 style={{ marginLeft: 'calc(10% + 10px)' }}>Chen Blog</h1>
-            <button className="theme-toggle-btn" onClick={toggleTheme}>
-                {isDarkMode ? (
-                    <i className="fa-solid fa-sun"></i>
-                ) : (
-                    <i className="fa-solid fa-moon"></i>
-                )}
-            </button>
-            <div
+            <NavBar toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
+            <article
                 className="marked"
                 id="content"
                 style={{
@@ -175,23 +157,20 @@ const App = () => {
             >
                 <h3
                     style={{
-                        marginLeft: '10px'
+                        marginLeft: '10px',
+                        marginBlockStart: '10px'
                     }}
                 >
                     Article: {title}
                 </h3>
-                <div
-                    style={{
-                        display: 'flex'
-                    }}
-                >
+                <div style={{ display: 'flex' }}>
                     <div
                         style={{
                             flex: 8,
                             border: '1px solid #ccc',
                             borderRadius: '5px',
                             padding: '20px',
-                            height: 'calc(100vh - 270px)',
+                            height: 'calc(100vh - 280px)',
                             overflow: 'auto',
                             position: 'relative',
                             width: '80%'
@@ -213,57 +192,57 @@ const App = () => {
                             border: '1px solid #ccc',
                             borderRadius: '5px',
                             padding: '20px',
-                            height: 'calc(100vh - 270px)',
+                            height: 'calc(100vh - 280px)',
                             overflow: 'auto',
                             position: 'relative',
                             width: '20%'
                         }}
-                        ref={async ref => {
-                            if (ref) {
-                                const response =
-                                    await fetch('./asserts/about.md');
-                                const about = await response.text();
-                                const aboutHtml = markdownit().render(about);
-                                ref.innerHTML = DOMPurify.sanitize(aboutHtml);
-                                render_katex();
-                            }
-                        }}
-                    />
+                    >
+                        <ul className="blog-article-list">
+                            {articleList.map((article, index) => (
+                                <li key={index}>
+                                    <a onClick={() => {
+                                        setPage(index + 1);
+                                        history.pushState(null, null, `?page=${index + 1}`);
+                                        document.title = `Page ${index + 1} - Chen Blog`;
+                                    }}>
+                                        {article.name}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <button
-                    className="pretty-button"
-                    style={{
-                        left: 0,
-                        position: 'absolute',
-                        display: show_left ? 'block' : 'none'
-                    }}
-                    onClick={() => {
-                        setPage(page - 1);
-                        history.pushState(null, null, `?page=${page - 1}`);
-                        document.title = `Page ${page - 1} - Chen Blog`;
-                    }}
-                >
-                    Last Page
-                </button>
-                <button
-                    className="pretty-button"
-                    style={{
-                        right: 0,
-                        position: 'absolute',
-                        display: show_right ? 'block' : 'none'
-                    }}
-                    onClick={() => {
-                        setPage(page + 1);
-                        history.pushState(null, null, `?page=${page + 1}`);
-                        document.title = `Page ${page + 1} - Chen Blog`;
-                    }}
-                >
-                    Next Page
-                </button>
-            </div>
-            <p className="hitokoto">{hitokoto_text}</p>
+            </article>
+            <button
+                className="pretty-button"
+                style={{
+                    left: 0,
+                    display: show_left ? 'block' : 'none'
+                }}
+                onClick={() => {
+                    setPage(page - 1);
+                    history.pushState(null, null, `?page=${page - 1}`);
+                    document.title = `Page ${page - 1} - Chen Blog`;
+                }}
+            >
+                Last Page
+            </button>
+            <button
+                className="pretty-button"
+                style={{
+                    right: 0,
+                    display: show_right ? 'block' : 'none'
+                }}
+                onClick={() => {
+                    setPage(page + 1);
+                    history.pushState(null, null, `?page=${page + 1}`);
+                    document.title = `Page ${page + 1} - Chen Blog`;
+                }}
+            >
+                Next Page
+            </button>
+            <Footer />
         </div>
     );
 };
