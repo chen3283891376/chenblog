@@ -125,7 +125,7 @@ const App = () => {
             comments.innerHTML = '';
 
             const utterances = document.createElement('script');
-            utterances.setAttribute('src', 'https://utteranc.es/client.js');
+            utterances.setAttribute('src', './js/utterances-client.js');
             utterances.setAttribute('repo', 'chen3283891376/chenblog');
             utterances.setAttribute('issue-term', 'title');
             utterances.setAttribute(
@@ -201,11 +201,17 @@ const App = () => {
                         <ul className="blog-article-list">
                             {articleList.map((article, index) => (
                                 <li key={index}>
-                                    <a onClick={() => {
-                                        setPage(index + 1);
-                                        history.pushState(null, null, `?page=${index + 1}`);
-                                        document.title = `Page ${index + 1} - Chen Blog`;
-                                    }}>
+                                    <a
+                                        onClick={() => {
+                                            setPage(index + 1);
+                                            history.pushState(
+                                                null,
+                                                null,
+                                                `?page=${index + 1}`
+                                            );
+                                            document.title = `Page ${index + 1} - Chen Blog`;
+                                        }}
+                                    >
                                         {article.name}
                                     </a>
                                 </li>

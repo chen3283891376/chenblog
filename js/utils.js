@@ -12,6 +12,6 @@ const render_katex = () => {
     });
 };
 
-(function (){
+(function () {
     window.render_katex = render_katex;
 })();

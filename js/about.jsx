@@ -26,9 +26,7 @@ const About = () => {
         const func = async () => {
             const marked = markdownit();
 
-            const articleResponse = await fetch(
-                `./asserts/about.md`
-            );
+            const articleResponse = await fetch(`./asserts/about.md`);
             const article = await articleResponse.text();
             const articleHtml = marked.render(article);
             setContentHTML(articleHtml);
@@ -66,8 +64,8 @@ const About = () => {
             />
             <Footer />
         </div>
-    )
-}
+    );
+};
 
 const root = ReactDOM.createRoot(document.getElementById('app'));
 root.render(<About />);

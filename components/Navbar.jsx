@@ -24,17 +24,17 @@ const Navbar = ({ isDarkMode, toggleTheme }) => {
                         <a href={`./index.html?page=1`}>主页</a>
                     </li>
                     <li className={'blog-nav-links-item'}>
-                        <a href={"./about.html"}>关于</a>
+                        <a href={'./about.html'}>关于</a>
                     </li>
                     <li className={'blog-nav-links-item'}>
-                        <a href={"./friends.html"}>友链</a>
+                        <a href={'./friends.html'}>友链</a>
                     </li>
                 </ul>
             </nav>
         </header>
-    )
+    );
 };
 
-(function() {
+(function () {
     window.NavBar = Navbar;
 })();

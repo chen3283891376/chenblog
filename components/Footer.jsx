@@ -3,13 +3,13 @@
 
 const Footer = () => {
     const hitokoto_text = hitokoto();
-  return (
-      <footer>
-          <p className="hitokoto">{hitokoto_text}</p>
-      </footer>
-  );
+    return (
+        <footer>
+            <p className="hitokoto">{hitokoto_text}</p>
+        </footer>
+    );
 };
 
-(function() {
+(function () {
     window.Footer = Footer;
 })();
