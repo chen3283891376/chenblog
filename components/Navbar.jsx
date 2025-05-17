@@ -11,7 +11,6 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
     };
     return (
         <header>
-            <div className="loader"></div>
             <h1
                 style={{
                     marginLeft: 'calc(10% + 10px)',

@@ -3,7 +3,7 @@
 // import NavBar from '../components/NavBar';
 // import Footer from '../components/Footer';
 
-const Message = () => {
+const MessagePage = () => {
     const [isDarkMode, setIsDarkMode] = React.useState(false);
     const [messages, setMessages] = React.useState([]);
 
@@ -43,4 +43,4 @@ const Message = () => {
 };
 
 const root = ReactDOM.createRoot(document.getElementById('app'));
-root.render(<Message />);
+root.render(<MessagePage />);
