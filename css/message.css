@@ -1,0 +1,17 @@
+@import url('./index.css');
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card {
+    background-color: var(--content-background-color);
+    border-radius: 5px;
+    box-shadow: 0 0 10px var(--shadow-color);
+    padding: 10px;
+}

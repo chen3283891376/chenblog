@@ -1,8 +1,17 @@
 // import React from 'react';
 
-const Navbar = ({ isDarkMode, toggleTheme }) => {
+const Navbar = ({ isDarkMode, setIsDarkMode }) => {
+    const toggleTheme = () => {
+        setIsDarkMode(prevMode => {
+            const newMode = !prevMode;
+            document.documentElement.classList.toggle('dark-mode', newMode);
+            localStorage.setItem('theme', newMode ? 'dark' : 'light');
+            return newMode;
+        });
+    };
     return (
         <header>
+            <div className="loader"></div>
             <h1
                 style={{
                     marginLeft: 'calc(10% + 10px)',
@@ -28,6 +37,9 @@ const Navbar = ({ isDarkMode, toggleTheme }) => {
                     </li>
                     <li className={'blog-nav-links-item'}>
                         <a href={'./friends.html'}>友链</a>
+                    </li>
+                    <li className={'blog-nav-links-item'}>
+                        <a href={'./message.html'}>闲言碎语</a>
                     </li>
                 </ul>
             </nav>

@@ -10,14 +10,6 @@ const About = () => {
     const [isDarkMode, setIsDarkMode] = React.useState(false);
     const [contentHTML, setContentHTML] = React.useState('');
 
-    const toggleTheme = () => {
-        setIsDarkMode(prevMode => {
-            const newMode = !prevMode;
-            document.documentElement.classList.toggle('dark-mode', newMode);
-            localStorage.setItem('theme', newMode ? 'dark' : 'light');
-            return newMode;
-        });
-    };
     React.useEffect(() => {
         const loader = document.querySelector('.loader');
         loader.classList.remove('hidden');
@@ -42,7 +34,7 @@ const About = () => {
 
     return (
         <div className="about">
-            <NavBar toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
+            <NavBar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
             <div
                 style={{
                     margin: '0 auto',

@@ -7,7 +7,7 @@
 // import NavBar from './components/NavBar';
 // import Footer from './components/Footer';
 
-const App = () => {
+const Home = () => {
     const params = new URLSearchParams(window.location.search);
     const [page, setPage] = React.useState(Number(params.get('page')) || 1);
     const [show_left, setShowLeft] = React.useState(true);
@@ -32,15 +32,6 @@ const App = () => {
             document.documentElement.classList.remove('dark-mode');
         }
     }, []);
-
-    const toggleTheme = () => {
-        setIsDarkMode(prevMode => {
-            const newMode = !prevMode;
-            document.documentElement.classList.toggle('dark-mode', newMode);
-            localStorage.setItem('theme', newMode ? 'dark' : 'light');
-            return newMode;
-        });
-    };
 
     React.useEffect(() => {
         const loader = document.querySelector('.loader');
@@ -145,7 +136,7 @@ const App = () => {
                 href={`https://fastly.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/stackoverflow-${isDarkMode ? 'dark' : 'light'}.min.css`}
                 crossOrigin="anonymous"
             />
-            <NavBar toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
+            <NavBar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
             <article
                 className="marked"
                 id="content"
@@ -254,4 +245,4 @@ const App = () => {
 };
 
 const root = ReactDOM.createRoot(document.getElementById('app'));
-root.render(<App />);
+root.render(<Home />);
