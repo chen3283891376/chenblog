@@ -1,7 +1,7 @@
-<!doctype html>
-<html lang="zh-CN">
+<!DOCTYPE html>
+<html>
     <head>
-        <title>Chen Blog</title>
+        <title>Home - Chen Blog</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="Chen Blog" />
@@ -9,46 +9,22 @@
         <meta name="author" content="chen3283891376" />
         <link rel="icon" href="./asserts/favicon.png" />
 
-        <!-- KaTeX -->
-        <script
-            defer
-            src="https://fastly.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"
-        ></script>
-        <script
-            defer
-            src="https://fastly.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"
-        ></script>
-
         <!-- Babel & React -->
         <script src="https://fastly.jsdelivr.net/npm/babel-standalone@6.26.0/babel.min.js"></script>
         <script src="https://fastly.jsdelivr.net/npm/react@18.2.0/umd/react.development.min.js"></script>
         <script src="https://fastly.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.development.min.js"></script>
-
-        <!-- DOMPurify -->
-        <script src="https://fastly.jsdelivr.net/npm/dompurify@3.2.5/dist/purify.min.js"></script>
-
-        <!-- Highlight.js -->
-        <script src="./js/highlight.js"></script>
-        <script src="./js/highlight-line-number.js"></script>
-
-        <!-- MarkdownIt -->
-        <script src="https://fastly.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js"></script>
 
         <!-- Hitokoto -->
         <script src="./js/hitokoto.js"></script>
 
         <!-- Custom CSS -->
         <link rel="stylesheet" href="./css/index.css" />
-
-        <!-- Utils -->
-        <script src="./js/utils.js"></script>
     </head>
-
     <body>
         <div class="loader"></div>
         <script type="text/babel" src="./components/Navbar.jsx"></script>
         <script type="text/babel" src="./components/Footer.jsx"></script>
         <div id="app"></div>
-        <script type="text/babel" src="./pages/index.jsx"></script>
+        <script type="text/babel" src="./pages/home.jsx"></script>
     </body>
 </html>

@@ -29,7 +29,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
             <nav className="blog-nav">
                 <ul>
                     <li className={'blog-nav-links-item'}>
-                        <a href={`./index.html?page=1`}>主页</a>
+                        <a href={`./index.html`}>主页</a>
                     </li>
                     <li className={'blog-nav-links-item'}>
                         <a href={'./about.html'}>关于</a>

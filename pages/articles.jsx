@@ -7,7 +7,7 @@
 // import NavBar from './components/Navbar';
 // import Footer from './components/Footer';
 
-const Home = () => {
+const Article = () => {
     const params = new URLSearchParams(window.location.search);
     const [page, setPage] = React.useState(Number(params.get('page')) || 1);
     const [show_left, setShowLeft] = React.useState(true);
@@ -245,4 +245,4 @@ const Home = () => {
 };
 
 const root = ReactDOM.createRoot(document.getElementById('app'));
-root.render(<Home />);
+root.render(<Article />);
