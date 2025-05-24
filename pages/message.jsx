@@ -1,11 +1,22 @@
 // import React from "react";
 // import ReactDOM from "react-dom/client";
-// import NavBar from '../components/NavBar';
+// import NavBar from '../components/Navbar';
 // import Footer from '../components/Footer';
 
 const MessagePage = () => {
     const [isDarkMode, setIsDarkMode] = React.useState(false);
     const [messages, setMessages] = React.useState([]);
+
+    React.useEffect(() => {
+        const storedMode = localStorage.getItem('theme');
+        if (storedMode === 'dark') {
+            setIsDarkMode(true);
+            document.documentElement.classList.add('dark-mode');
+        } else {
+            setIsDarkMode(false);
+            document.documentElement.classList.remove('dark-mode');
+        }
+    }, []);
 
     React.useEffect(() => {
         const loader = document.querySelector('.loader');

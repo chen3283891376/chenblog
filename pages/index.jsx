@@ -4,7 +4,7 @@
 // import markdownit from 'markdown-it';
 // import hljs from 'highlight.js';
 // import render_katex from './utils.js';
-// import NavBar from './components/NavBar';
+// import NavBar from './components/Navbar';
 // import Footer from './components/Footer';
 
 const Home = () => {

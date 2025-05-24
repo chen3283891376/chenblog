@@ -40,6 +40,9 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
                     <li className={'blog-nav-links-item'}>
                         <a href={'./message.html'}>闲言碎语</a>
                     </li>
+                    <li className={'blog-nav-links-item'}>
+                        <a href={'./comments.html'}>留言板</a>
+                    </li>
                 </ul>
             </nav>
         </header>
