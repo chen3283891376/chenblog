@@ -34,8 +34,7 @@ const Hitokoto = [
 ];
 
 const hitokoto = () => {
-    let hitokoto_text = Hitokoto[Math.floor(Math.random() * Hitokoto.length)];
-    return hitokoto_text;
+    return Hitokoto[Math.floor(Math.random() * Hitokoto.length)];
 };
 
 (function () {

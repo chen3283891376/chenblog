@@ -27,7 +27,7 @@ const Home = () => {
         const func = async () => {
             const response = await fetch(`./article.json`);
             const data = await response.json();
-            setArticleList(data);
+            setArticleList(data.reverse());
 
             const contents = await Promise.all(data.map(async (article) => {
                 const response = await fetch(`./posts/${article.file}`);
@@ -65,7 +65,7 @@ const Home = () => {
                     <div key={index}>
                         <h2>{articleList[index].name}</h2>
                         <p>{content}</p>
-                        <a href={`./articles.html?page=${index + 1}`}>查看更多</a>
+                        <a href={`./articles.html?page=${articleList[index].id}`}>查看更多</a>
                         <i style={{ float: 'right', fontSize: '12px', color: '#999', display: 'block' }}>{articleList[index].time}</i>
                         <hr />
                     </div>
