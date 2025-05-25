@@ -46,25 +46,36 @@ const About = () => {
     return (
         <div className="about">
             <NavBar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-            <div
-                style={{
-                    margin: '0 auto',
-                    border: '1px solid #ccc',
-                    borderRadius: '5px',
-                    padding: '20px',
-                    height: 'calc(100vh - 200px)',
-                    overflow: 'auto',
-                    position: 'relative',
-                    width: '80%'
-                }}
-                ref={ref => {
-                    if (ref) {
-                        ref.innerHTML = DOMPurify.sanitize(contentHTML);
+            <article style={{ margin: '0 auto', width: '80%', display: 'flex' }}>
+                <div
+                    style={{
+                        border: '1px solid #ccc',
+                        borderRadius: '5px',
+                        padding: '20px',
+                        height: 'calc(100vh - 200px)',
+                        overflow: 'auto',
+                        position: 'relative',
+                        flex: 7
+                    }}
+                    ref={ref => {
+                        if (ref) {
+                            ref.innerHTML = DOMPurify.sanitize(contentHTML);
 
-                        render_katex();
-                    }
-                }}
-            />
+                            render_katex();
+                        }
+                    }}
+                />
+                <div style={{
+                        border: '1px solid #ccc',
+                        borderRadius: '5px',
+                        padding: '20px',
+                        height: 'calc(100vh - 200px)',
+                        position: 'relative',
+                        flex: 3
+                }}>
+                    <iframe style={{ height: '100%', border: 'none' }} src="https://loquacious-bienenstitch-58539b.netlify.app/"></iframe>
+                </div>
+            </article>
             <Footer />
         </div>
     );
