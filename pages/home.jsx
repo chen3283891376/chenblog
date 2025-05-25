@@ -57,7 +57,7 @@ const Home = () => {
                     border: '1px solid #ccc',
                     borderRadius: '5px',
                     padding: '20px',
-                    height: 'calc(100vh - 235px)',
+                    height: 'calc(100vh - 200px)',
                     overflow: 'auto',
                     position: 'relative'
             }}>

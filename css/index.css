@@ -382,6 +382,47 @@ tr {
     display: none;
 }
 
+/* 标题栏整体样式 */
+.blog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 10%;
+    background-color: var(--background-color);
+    box-shadow: 0 2px 4px var(--shadow-color);
+    margin-bottom: 20px;
+}
+
+/* 博客标题样式 */
+.blog-title {
+    margin: 0;
+    font-size: 24px;
+    color: var(--text-color);
+}
+
+/* 导航链接列表样式 */
+.blog-nav-links {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* 导航链接项样式 */
+.blog-nav-links-item {
+    margin-left: 2em;
+}
+
+.blog-nav-links-item a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.blog-nav-links-item a:hover {
+    color: var(--link-hover-color);
+}
+
 /* 主题切换按钮样式 */
 .theme-toggle-btn {
     position: absolute;
@@ -410,44 +451,6 @@ tr {
 .dark .theme-toggle-btn {
     background-color: rgba(30, 41, 59, 1);
     color: #fde047;
-}
-
-/* Nav 导航栏样式 */
-.blog-nav ul {
-    display: flex;
-    padding: 0;
-    list-style-type: none;
-    margin-left: calc(10% + 10px);
-}
-
-.blog-nav-links-item {
-    margin-right: 2em;
-    font-size: 1.1em;
-}
-
-.blog-nav-links-item a {
-    color: var(--text-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
-    position: relative;
-}
-
-.blog-nav-links-item a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 2px;
-    width: 100%;
-    background-color: gray;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.25s ease-out;
-}
-
-.blog-nav-links-item a:focus::after,
-.blog-nav-links-item a:hover::after {
-    transform: scaleX(1);
 }
 
 .blog-article-list {

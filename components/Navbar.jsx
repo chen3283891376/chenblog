@@ -10,15 +10,8 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
         });
     };
     return (
-        <header>
-            <h1
-                style={{
-                    marginLeft: 'calc(10% + 10px)',
-                    marginBlockStart: '10px'
-                }}
-            >
-                Chen Blog
-            </h1>
+        <header className="blog-header">
+            <h1 className="blog-title" style={{ cursor: 'pointer' }} onClick={() => { window.location.href = './index.html'; }}>Chen Blog</h1>
             <button className="theme-toggle-btn" onClick={toggleTheme}>
                 {isDarkMode ? (
                     <i className="fa-solid fa-sun"></i>
@@ -27,21 +20,21 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
                 )}
             </button>
             <nav className="blog-nav">
-                <ul>
-                    <li className={'blog-nav-links-item'}>
-                        <a href={`./index.html`}>主页</a>
+                <ul className="blog-nav-links">
+                    <li className="blog-nav-links-item">
+                        <a href="./index.html">主页</a>
                     </li>
-                    <li className={'blog-nav-links-item'}>
-                        <a href={'./about.html'}>关于</a>
+                    <li className="blog-nav-links-item">
+                        <a href="./about.html">关于</a>
                     </li>
-                    <li className={'blog-nav-links-item'}>
-                        <a href={'./friends.html'}>友链</a>
+                    <li className="blog-nav-links-item">
+                        <a href="./friends.html">友链</a>
                     </li>
-                    <li className={'blog-nav-links-item'}>
-                        <a href={'./message.html'}>闲言碎语</a>
+                    <li className="blog-nav-links-item">
+                        <a href="./message.html">闲言碎语</a>
                     </li>
-                    <li className={'blog-nav-links-item'}>
-                        <a href={'./comments.html'}>留言板</a>
+                    <li className="blog-nav-links-item">
+                        <a href="./comments.html">留言板</a>
                     </li>
                 </ul>
             </nav>

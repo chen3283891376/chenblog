@@ -161,7 +161,7 @@ const Article = () => {
                             border: '1px solid #ccc',
                             borderRadius: '5px',
                             padding: '20px',
-                            height: 'calc(100vh - 280px)',
+                            height: 'calc(100vh - 245px)',
                             overflow: 'auto',
                             position: 'relative',
                             width: '80%'
@@ -183,7 +183,7 @@ const Article = () => {
                             border: '1px solid #ccc',
                             borderRadius: '5px',
                             padding: '20px',
-                            height: 'calc(100vh - 280px)',
+                            height: 'calc(100vh - 245px)',
                             overflow: 'auto',
                             position: 'relative',
                             width: '20%'
