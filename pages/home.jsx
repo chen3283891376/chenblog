@@ -29,11 +29,13 @@ const Home = () => {
             const data = await response.json();
             setArticleList(data.reverse());
 
-            const contents = await Promise.all(data.map(async (article) => {
-                const response = await fetch(`./posts/${article.file}`);
-                const responseText = await response.text();
-                return responseText.slice(0, 200) + '...';
-            }));
+            const contents = await Promise.all(
+                data.map(async article => {
+                    const response = await fetch(`./posts/${article.file}`);
+                    const responseText = await response.text();
+                    return responseText.slice(0, 200) + '...';
+                })
+            );
             setArticleContents(contents);
         };
         if (!ignore)
@@ -60,21 +62,35 @@ const Home = () => {
                     height: 'calc(100vh - 200px)',
                     overflow: 'auto',
                     position: 'relative'
-            }}>
+                }}
+            >
                 {articleContents.map((content, index) => (
                     <div key={index}>
                         <h2>{articleList[index].name}</h2>
                         <p>{content}</p>
-                        <a href={`./articles.html?page=${articleList[index].id}`}>查看更多</a>
-                        <i style={{ float: 'right', fontSize: '12px', color: '#999', display: 'block' }}>{articleList[index].time}</i>
+                        <a
+                            href={`./articles.html?page=${articleList[index].id}`}
+                        >
+                            查看更多
+                        </a>
+                        <i
+                            style={{
+                                float: 'right',
+                                fontSize: '12px',
+                                color: '#999',
+                                display: 'block'
+                            }}
+                        >
+                            {articleList[index].time}
+                        </i>
                         <hr />
                     </div>
                 ))}
             </div>
             <Footer />
         </div>
-    )
+    );
 };
 
-const root = ReactDOM.createRoot(document.getElementById("app"));
+const root = ReactDOM.createRoot(document.getElementById('app'));
 root.render(<Home />);

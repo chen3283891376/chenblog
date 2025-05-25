@@ -11,7 +11,15 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
     };
     return (
         <header className="blog-header">
-            <h1 className="blog-title" style={{ cursor: 'pointer' }} onClick={() => { window.location.href = './index.html'; }}>Chen Blog</h1>
+            <h1
+                className="blog-title"
+                style={{ cursor: 'pointer' }}
+                onClick={() => {
+                    window.location.href = './index.html';
+                }}
+            >
+                Chen Blog
+            </h1>
             <button className="theme-toggle-btn" onClick={toggleTheme}>
                 {isDarkMode ? (
                     <i className="fa-solid fa-sun"></i>
