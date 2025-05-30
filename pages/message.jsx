@@ -11,10 +11,10 @@ const MessagePage = () => {
         const storedMode = localStorage.getItem('theme');
         if (storedMode === 'dark') {
             setIsDarkMode(true);
-            document.documentElement.classList.add('dark-mode');
+            document.documentElement.classList.add('dark');
         } else {
             setIsDarkMode(false);
-            document.documentElement.classList.remove('dark-mode');
+            document.documentElement.classList.remove('dark');
         }
     }, []);
 

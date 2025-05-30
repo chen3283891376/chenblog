@@ -14,10 +14,10 @@ const About = () => {
         const storedMode = localStorage.getItem('theme');
         if (storedMode === 'dark') {
             setIsDarkMode(true);
-            document.documentElement.classList.add('dark-mode');
+            document.documentElement.classList.add('dark');
         } else {
             setIsDarkMode(false);
-            document.documentElement.classList.remove('dark-mode');
+            document.documentElement.classList.remove('dark');
         }
     }, []);
 
@@ -45,8 +45,8 @@ const About = () => {
 
     return (
         <div className="about">
-            <NavBar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-            <article style={{ margin: '0 auto', width: '80%', display: 'flex' }}>
+            <NavBar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} haveIframe={true} />
+            <article style={{ display: 'flex', flexDirection: 'row', }}>
                 <div
                     style={{
                         border: '1px solid #ccc',
@@ -73,7 +73,7 @@ const About = () => {
                         position: 'relative',
                         flex: 3
                 }}>
-                    <iframe style={{ height: '100%', border: 'none' }} src="https://loquacious-bienenstitch-58539b.netlify.app/"></iframe>
+                    <iframe style={{ height: '100%', border: 'none' }} src="https://ac.yunyoujun.cn/"></iframe>
                 </div>
             </article>
             <Footer />

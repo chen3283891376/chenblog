@@ -1,10 +1,10 @@
 // import React from 'react';
 
-const Navbar = ({ isDarkMode, setIsDarkMode }) => {
+const Navbar = ({ isDarkMode, setIsDarkMode, haveIframe=false }) => {
     const toggleTheme = () => {
         setIsDarkMode(prevMode => {
             const newMode = !prevMode;
-            document.documentElement.classList.toggle('dark-mode', newMode);
+            document.documentElement.classList.toggle('dark', newMode);
             localStorage.setItem('theme', newMode ? 'dark' : 'light');
             return newMode;
         });

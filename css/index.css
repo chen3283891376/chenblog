@@ -24,7 +24,7 @@
     --shadow-color: rgba(0, 0, 0, 0.2);
 }
 
-.dark-mode {
+.dark {
     --primary-color: #61dafb;
     --secondary-color: #4ec9b0;
     --background-color: #1e1e1e;
@@ -248,20 +248,20 @@ tr {
 }
 
 /* 深色模式下的标题和段落样式 */
-.dark-mode h1,
-.dark-mode h2,
-.dark-mode h3,
-.dark-mode h4,
-.dark-mode h5,
-.dark-mode h6 {
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
     color: var(--heading-text-color);
 }
 
-.dark-mode.katex {
+.dark.katex {
     color: var(--katex-text-color);
 }
 
-.dark-mode p {
+.dark p {
     color: var(--text-color);
 }
 
@@ -390,7 +390,11 @@ tr {
     padding: 16px 10%;
     background-color: var(--background-color);
     box-shadow: 0 2px 4px var(--shadow-color);
-    margin-bottom: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
 }
 
 /* 博客标题样式 */
@@ -463,4 +467,10 @@ tr {
     cursor: pointer;
     text-decoration: none;
     transition: color 0.3s ease;
+}
+
+article {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 90px;
 }

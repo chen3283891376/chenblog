@@ -26,10 +26,10 @@ const Article = () => {
         const storedMode = localStorage.getItem('theme');
         if (storedMode === 'dark') {
             setIsDarkMode(true);
-            document.documentElement.classList.add('dark-mode');
+            document.documentElement.classList.add('dark');
         } else {
             setIsDarkMode(false);
-            document.documentElement.classList.remove('dark-mode');
+            document.documentElement.classList.remove('dark');
         }
     }, []);
 
@@ -140,11 +140,11 @@ const Article = () => {
             <article
                 className="marked"
                 id="content"
-                style={{
-                    width: '80%',
-                    marginLeft: 'auto',
-                    marginRight: 'auto'
-                }}
+                // style={{
+                //     width: '80%',
+                //     marginLeft: 'auto',
+                //     marginRight: 'auto'
+                // }}
             >
                 <h3
                     style={{

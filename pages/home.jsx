@@ -12,10 +12,10 @@ const Home = () => {
         const storedMode = localStorage.getItem('theme');
         if (storedMode === 'dark') {
             setIsDarkMode(true);
-            document.documentElement.classList.add('dark-mode');
+            document.documentElement.classList.add('dark');
         } else {
             setIsDarkMode(false);
-            document.documentElement.classList.remove('dark-mode');
+            document.documentElement.classList.remove('dark');
         }
     }, []);
 
@@ -61,7 +61,8 @@ const Home = () => {
                     padding: '20px',
                     height: 'calc(100vh - 200px)',
                     overflow: 'auto',
-                    position: 'relative'
+                    position: 'relative',
+                    marginTop: '90px',
                 }}
             >
                 {articleContents.map((content, index) => (
