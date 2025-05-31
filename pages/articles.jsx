@@ -7,6 +7,13 @@
 // import NavBar from './components/Navbar';
 // import Footer from './components/Footer';
 
+const marked = markdownit({
+    html: true,
+    linkify: true,
+    typographer: true,
+    quotes: '“”‘’'
+});
+
 const Article = () => {
     const params = new URLSearchParams(window.location.search);
     const [page, setPage] = React.useState(Number(params.get('page')) || 1);
@@ -14,7 +21,6 @@ const Article = () => {
     const [show_right, setShowRight] = React.useState(true);
     const [title, setTitle] = React.useState('');
     const [contentHTML, setContentHTML] = React.useState('');
-    const [articleList, setArticleList] = React.useState([]);
     const [isDarkMode, setIsDarkMode] = React.useState(false);
 
     if (!params.get('page')) {
@@ -39,11 +45,10 @@ const Article = () => {
 
         let ignore = false;
         const func = async () => {
-            const marked = markdownit();
+            // const marked = markdownit();
 
             const response = await fetch(`./article.json`);
             const data = await response.json();
-            setArticleList(data);
 
             const articleResponse = await fetch(
                 `./posts/${data[page - 1].file}`
@@ -137,15 +142,7 @@ const Article = () => {
                 crossOrigin="anonymous"
             />
             <NavBar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-            <article
-                className="marked"
-                id="content"
-                // style={{
-                //     width: '80%',
-                //     marginLeft: 'auto',
-                //     marginRight: 'auto'
-                // }}
-            >
+            <article className="marked" id="content">
                 <h3
                     style={{
                         marginLeft: '10px',
@@ -189,25 +186,7 @@ const Article = () => {
                             width: '20%'
                         }}
                     >
-                        <ul className="blog-article-list">
-                            {articleList.map((article, index) => (
-                                <li key={index}>
-                                    <a
-                                        onClick={() => {
-                                            setPage(index + 1);
-                                            history.pushState(
-                                                null,
-                                                null,
-                                                `?page=${index + 1}`
-                                            );
-                                            document.title = `Page ${index + 1} - Chen Blog`;
-                                        }}
-                                    >
-                                        {article.name}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
+                        <h4>About Me</h4>
                     </div>
                 </div>
             </article>

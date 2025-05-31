@@ -62,7 +62,7 @@ const Home = () => {
                     height: 'calc(100vh - 200px)',
                     overflow: 'auto',
                     position: 'relative',
-                    marginTop: '90px',
+                    marginTop: '90px'
                 }}
             >
                 {articleContents.map((content, index) => (

@@ -1,6 +1,6 @@
 // import React from 'react';
 
-const Navbar = ({ isDarkMode, setIsDarkMode, haveIframe=false }) => {
+const Navbar = ({ isDarkMode, setIsDarkMode, haveIframe = false }) => {
     const toggleTheme = () => {
         setIsDarkMode(prevMode => {
             const newMode = !prevMode;

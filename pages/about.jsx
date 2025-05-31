@@ -45,8 +45,12 @@ const About = () => {
 
     return (
         <div className="about">
-            <NavBar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} haveIframe={true} />
-            <article style={{ display: 'flex', flexDirection: 'row', }}>
+            <NavBar
+                isDarkMode={isDarkMode}
+                setIsDarkMode={setIsDarkMode}
+                haveIframe={true}
+            />
+            <article style={{ display: 'flex', flexDirection: 'row' }}>
                 <div
                     style={{
                         border: '1px solid #ccc',
@@ -65,15 +69,20 @@ const About = () => {
                         }
                     }}
                 />
-                <div style={{
+                <div
+                    style={{
                         border: '1px solid #ccc',
                         borderRadius: '5px',
                         padding: '20px',
                         height: 'calc(100vh - 200px)',
                         position: 'relative',
                         flex: 3
-                }}>
-                    <iframe style={{ height: '100%', border: 'none' }} src="https://ac.yunyoujun.cn/"></iframe>
+                    }}
+                >
+                    <iframe
+                        style={{ height: '100%', border: 'none' }}
+                        src="https://ac.yunyoujun.cn/"
+                    ></iframe>
                 </div>
             </article>
             <Footer />

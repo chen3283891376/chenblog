@@ -41,7 +41,7 @@ const MessagePage = () => {
         <div className="about">
             <NavBar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
             <article className="container">
-                {messages.map((message, index) => (
+                {messages.reverse().map((message, index) => (
                     <div key={index} className="card">
                         <p>{message.text}</p>
                         <p>{message.time}</p>
