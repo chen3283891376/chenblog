@@ -105,7 +105,7 @@ const Home = () => {
                     </div>
                 ))}
             </div>
-            <div className="pagination" style={{ textAlign: 'center', margin: '20px 0' }}>
+            <div className="pagination" style={{ textAlign: 'center' }}>
                 {Array.from({ length: totalPages }, (_, index) => (
                     <button
                         key={index}
