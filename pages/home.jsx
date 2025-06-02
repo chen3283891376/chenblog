@@ -3,10 +3,13 @@
 // import NavBar from '../components/Navbar';
 // import Footer from '../components/Footer';
 
+const itemsPerPage = 5; // 每页显示的文章数量
+
 const Home = () => {
     const [isDarkMode, setIsDarkMode] = React.useState(false);
     const [articleList, setArticleList] = React.useState([]);
     const [articleContents, setArticleContents] = React.useState([]);
+    const [currentPage, setCurrentPage] = React.useState(1); // 当前页码
 
     React.useEffect(() => {
         const storedMode = localStorage.getItem('theme');
@@ -47,6 +50,20 @@ const Home = () => {
         };
     }, []);
 
+    // 计算当前页显示的文章索引
+    const indexOfLastArticle = currentPage * itemsPerPage;
+    const indexOfFirstArticle = indexOfLastArticle - itemsPerPage;
+    const currentArticles = articleList.slice(indexOfFirstArticle, indexOfLastArticle);
+    const currentContents = articleContents.slice(indexOfFirstArticle, indexOfLastArticle);
+
+    // 计算总页数
+    const totalPages = Math.ceil(articleList.length / itemsPerPage);
+
+    // 处理页码改变
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
     return (
         <div>
             <NavBar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
@@ -65,12 +82,12 @@ const Home = () => {
                     marginTop: '90px'
                 }}
             >
-                {articleContents.map((content, index) => (
+                {currentContents.map((content, index) => (
                     <div key={index}>
-                        <h2>{articleList[index].name}</h2>
+                        <h2>{currentArticles[index].name}</h2>
                         <p>{content}</p>
                         <a
-                            href={`./articles.html?page=${articleList[index].id}`}
+                            href={`./articles.html?page=${currentArticles[index].id}`}
                         >
                             查看更多
                         </a>
@@ -82,10 +99,28 @@ const Home = () => {
                                 display: 'block'
                             }}
                         >
-                            {articleList[index].time}
+                            {currentArticles[index].time}
                         </i>
                         <hr />
                     </div>
+                ))}
+            </div>
+            <div className="pagination" style={{ textAlign: 'center', margin: '20px 0' }}>
+                {Array.from({ length: totalPages }, (_, index) => (
+                    <button
+                        key={index}
+                        onClick={() => handlePageChange(index + 1)}
+                        style={{
+                            margin: '0 5px',
+                            padding: '5px 10px',
+                            border: '1px solid #ccc',
+                            borderRadius: '3px',
+                            background: currentPage === index + 1 ? '#007BFF' : 'white',
+                            color: currentPage === index + 1 ? 'white' : 'black'
+                        }}
+                    >
+                        {index + 1}
+                    </button>
                 ))}
             </div>
             <Footer />
