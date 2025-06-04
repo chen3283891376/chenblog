@@ -1,7 +1,7 @@
-// import React from "react";
-// import ReactDOM from "react-dom/client";
-// import NavBar from '../components/Navbar';
-// import Footer from '../components/Footer';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import NavBar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const CommentsPage = () => {
     const [isDarkMode, setIsDarkMode] = React.useState(false);

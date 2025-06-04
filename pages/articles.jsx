@@ -1,11 +1,11 @@
-// import React from "react";
-// import ReactDOM from "react-dom/client";
-// import DOMPurify from 'dompurify';
-// import markdownit from 'markdown-it';
-// import hljs from 'highlight.js';
-// import render_katex from './utils.js';
-// import NavBar from './components/Navbar';
-// import Footer from './components/Footer';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import DOMPurify from 'dompurify';
+import markdownit from 'markdown-it';
+import hljs from 'highlight.js';
+import render_katex from '../js/utils.js';
+import NavBar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const marked = markdownit({
     html: true,

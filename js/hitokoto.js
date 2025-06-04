@@ -37,6 +37,4 @@ const hitokoto = () => {
     return Hitokoto[Math.floor(Math.random() * Hitokoto.length)];
 };
 
-(function () {
-    window.hitokoto = hitokoto;
-})();
+export default hitokoto;

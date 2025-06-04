@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,21 +9,12 @@
         <link rel="icon" href="./asserts/favicon.png" />
         <title>Comments - Chen Blog</title>
 
-        <!-- Babel & React -->
-        <script src="./node_modules/babel-standalone/babel.min.js"></script>
-        <script src="./node_modules/react/umd/react.production.min.js"></script>
-        <script src="./node_modules/react-dom/umd/react-dom.production.min.js"></script>
-
-        <!-- Hitokoto -->
-        <script src="./js/hitokoto.js"></script>
-
         <!-- Custom CSS -->
         <link rel="stylesheet" href="./css/index.css" />
     </head>
     <body>
-        <script type="text/babel" src="./components/Navbar.jsx"></script>
-        <script type="text/babel" src="./components/Footer.jsx"></script>
+        <div class="loader"></div>
         <div id="app"></div>
-        <script type="text/babel" src="./pages/comments.jsx"></script>
+        <script src="./dist/comments.bundle.js"></script>
     </body>
 </html>

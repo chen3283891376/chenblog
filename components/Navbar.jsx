@@ -1,4 +1,4 @@
-// import React from 'react';
+import React from 'react';
 
 const Navbar = ({ isDarkMode, setIsDarkMode, haveIframe = false }) => {
     const toggleTheme = () => {
@@ -50,6 +50,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode, haveIframe = false }) => {
     );
 };
 
-(function () {
-    window.NavBar = Navbar;
-})();
+// (function () {
+//     window.NavBar = Navbar;
+// })();
+export default Navbar;

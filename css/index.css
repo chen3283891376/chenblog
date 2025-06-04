@@ -1,6 +1,6 @@
 /* 引入字体和图标库 */
-@import url('https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css');
-@import url('https://fastly.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css');
+@import url('../node_modules/@fortawesome/fontawesome-free/css/all.min.css');
+@import url('../node_modules/katex/dist/katex.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 /* 全局变量定义 */

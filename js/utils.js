@@ -1,4 +1,4 @@
-// import renderMathInElement from 'katex/dist/contrib/auto-render';
+import renderMathInElement from 'katex/dist/contrib/auto-render';
 
 const render_katex = () => {
     renderMathInElement(document.body, {
@@ -12,6 +12,4 @@ const render_katex = () => {
     });
 };
 
-(function () {
-    window.render_katex = render_katex;
-})();
+export default render_katex;
