@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import DOMPurify from 'dompurify';
 import markdownit from 'markdown-it';
 import hljs from 'highlight.js';
+import { lineNumbersBlock } from '../js/highlight-line-number.js';
 import render_katex from '../js/utils.js';
 import NavBar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -84,7 +85,7 @@ const Article = () => {
         hljs.highlightAll();
 
         document.querySelectorAll('.marked pre code').forEach(el => {
-            window.LineNumbers.lineNumbersBlock(el);
+            lineNumbersBlock(el);
 
             const lang = el.className
                 .replace('language-', '')
