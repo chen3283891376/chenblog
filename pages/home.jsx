@@ -1,5 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import NavBar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -53,14 +53,20 @@ const Home = () => {
     // 计算当前页显示的文章索引
     const indexOfLastArticle = currentPage * itemsPerPage;
     const indexOfFirstArticle = indexOfLastArticle - itemsPerPage;
-    const currentArticles = articleList.slice(indexOfFirstArticle, indexOfLastArticle);
-    const currentContents = articleContents.slice(indexOfFirstArticle, indexOfLastArticle);
+    const currentArticles = articleList.slice(
+        indexOfFirstArticle,
+        indexOfLastArticle
+    );
+    const currentContents = articleContents.slice(
+        indexOfFirstArticle,
+        indexOfLastArticle
+    );
 
     // 计算总页数
     const totalPages = Math.ceil(articleList.length / itemsPerPage);
 
     // 处理页码改变
-    const handlePageChange = (pageNumber) => {
+    const handlePageChange = pageNumber => {
         setCurrentPage(pageNumber);
     };
 
@@ -115,7 +121,8 @@ const Home = () => {
                             padding: '5px 10px',
                             border: '1px solid #ccc',
                             borderRadius: '3px',
-                            background: currentPage === index + 1 ? '#007BFF' : 'white',
+                            background:
+                                currentPage === index + 1 ? '#007BFF' : 'white',
                             color: currentPage === index + 1 ? 'white' : 'black'
                         }}
                     >

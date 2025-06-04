@@ -1,5 +1,5 @@
-import React from "react";
-import hitokoto from "../js/hitokoto.js"
+import React from 'react';
+import hitokoto from '../js/hitokoto.js';
 
 const Footer = () => {
     const hitokoto_text = hitokoto();

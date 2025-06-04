@@ -1,5 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import DOMPurify from 'dompurify';
 import markdownit from 'markdown-it';
 import hljs from 'highlight.js';

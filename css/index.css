@@ -59,7 +59,9 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
-    transition: background-color var(--transition-time) ease, color var(--transition-time) ease;
+    transition:
+        background-color var(--transition-time) ease,
+        color var(--transition-time) ease;
     scroll-behavior: smooth;
 }
 
@@ -141,7 +143,9 @@ img {
     max-width: 100%;
     border-radius: 10px;
     box-shadow: 0 4px 8px var(--shadow-color);
-    transition: transform var(--transition-time) ease, box-shadow var(--transition-time) ease;
+    transition:
+        transform var(--transition-time) ease,
+        box-shadow var(--transition-time) ease;
 }
 
 img:hover {
@@ -167,7 +171,9 @@ tr {
 /* 代码块相关 */
 .marked code,
 .marked pre {
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    font-family:
+        SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+        'Courier New', monospace;
     background-color: var(--code-background-color);
 }
 
@@ -234,7 +240,9 @@ tr {
     color: var(--link-color);
     text-decoration: none;
     border-bottom: 1px solid transparent;
-    transition: color var(--transition-time) ease, border-bottom-color var(--transition-time) ease;
+    transition:
+        color var(--transition-time) ease,
+        border-bottom-color var(--transition-time) ease;
 }
 
 .marked a:hover {
@@ -300,7 +308,9 @@ tr {
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color var(--transition-time) ease, transform var(--transition-time) ease;
+    transition:
+        background-color var(--transition-time) ease,
+        transform var(--transition-time) ease;
 }
 
 .copy-btn:hover {
@@ -431,7 +441,9 @@ tr {
     left: 0;
     right: 0;
     z-index: 999;
-    transition: padding var(--transition-time) ease, box-shadow var(--transition-time) ease;
+    transition:
+        padding var(--transition-time) ease,
+        box-shadow var(--transition-time) ease;
 }
 
 .blog-header:hover {
