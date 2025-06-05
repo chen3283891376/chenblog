@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import DOMPurify from 'dompurify';
 import markdownit from 'markdown-it';
 import hljs from 'highlight.js';
-import { lineNumbersBlock } from '../js/highlight-line-number.js';
-import render_katex from '../js/utils.js';
+import { lineNumbersBlock } from '../js/highlight-line-number';
+import render_katex from '../js/utils';
 import NavBar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -139,7 +139,8 @@ const Article = () => {
         <>
             <link
                 rel="stylesheet"
-                href={`https://fastly.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/stackoverflow-${isDarkMode ? 'dark' : 'light'}.min.css`}
+                href={`./node_modules/highlight.js/styles/stackoverflow-${isDarkMode ? 'dark' : 'light'}.min.css`}
+
                 crossOrigin="anonymous"
             />
             <NavBar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import DOMPurify from 'dompurify';
 import markdownit from 'markdown-it';
-import render_katex from '../js/utils.js';
+import render_katex from '../js/utils';
 import NavBar from '../components/Navbar';
 import Footer from '../components/Footer';
 
