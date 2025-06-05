@@ -71,7 +71,7 @@ const Home = () => {
     };
 
     return (
-        <div>
+        <>
             <NavBar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
             <div
                 className="marked"
@@ -131,7 +131,7 @@ const Home = () => {
                 ))}
             </div>
             <Footer />
-        </div>
+        </>
     );
 };
 

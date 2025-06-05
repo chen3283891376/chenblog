@@ -136,7 +136,7 @@ const Article = () => {
     }, [contentHTML, isDarkMode]);
 
     return (
-        <div>
+        <>
             <link
                 rel="stylesheet"
                 href={`https://fastly.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/stackoverflow-${isDarkMode ? 'dark' : 'light'}.min.css`}
@@ -220,7 +220,7 @@ const Article = () => {
                 Next Page
             </button>
             <Footer />
-        </div>
+        </>
     );
 };
 

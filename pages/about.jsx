@@ -44,7 +44,7 @@ const About = () => {
     }, []);
 
     return (
-        <div className="about">
+        <>
             <NavBar
                 isDarkMode={isDarkMode}
                 setIsDarkMode={setIsDarkMode}
@@ -86,7 +86,7 @@ const About = () => {
                 </div>
             </article>
             <Footer />
-        </div>
+        </>
     );
 };
 

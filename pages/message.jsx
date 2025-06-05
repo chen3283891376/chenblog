@@ -38,7 +38,7 @@ const MessagePage = () => {
     }, []);
 
     return (
-        <div className="about">
+        <>
             <NavBar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
             <article className="container">
                 {messages.reverse().map((message, index) => (
@@ -49,7 +49,7 @@ const MessagePage = () => {
                 ))}
             </article>
             <Footer />
-        </div>
+        </>
     );
 };
 

@@ -28,7 +28,7 @@ const CommentsPage = () => {
     }, [isDarkMode]);
 
     return (
-        <div>
+        <>
             <NavBar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
             <article
                 className="comment-box"
@@ -53,7 +53,7 @@ const CommentsPage = () => {
                 }}
             />
             <Footer />
-        </div>
+        </>
     );
 };
 
