@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import NavBar from '../components/Navbar';
-import Footer from '../components/Footer';
+import NavBar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const MessagePage = () => {
     const [isDarkMode, setIsDarkMode] = React.useState(false);
@@ -24,7 +24,7 @@ const MessagePage = () => {
 
         let ignore = false;
         const func = async () => {
-            const response = await fetch('./asserts/messages.json');
+            const response = await fetch('./src/asserts/messages.json');
             const responseData = await response.json();
             setMessages(responseData);
         };
@@ -39,6 +39,7 @@ const MessagePage = () => {
 
     return (
         <>
+            <link rel="stylesheet" href="./src/css/message.css" />
             <NavBar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
             <article className="container">
                 {messages.reverse().map((message, index) => (

@@ -1,5 +1,5 @@
 import React from 'react';
-import hitokoto from '../js/hitokoto.js';
+import hitokoto from '@/js/hitokoto';
 
 const Footer = () => {
     const hitokoto_text = hitokoto();
@@ -10,7 +10,4 @@ const Footer = () => {
     );
 };
 
-// (function () {
-//     window.Footer = Footer;
-// })();
 export default Footer;

@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import DOMPurify from 'dompurify';
 import markdownit from 'markdown-it';
-import render_katex from '../js/utils';
-import NavBar from '../components/Navbar';
-import Footer from '../components/Footer';
+import render_katex from '@/js/utils';
+import NavBar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const About = () => {
     const [isDarkMode, setIsDarkMode] = React.useState(false);
@@ -29,7 +29,7 @@ const About = () => {
         const func = async () => {
             const marked = markdownit();
 
-            const articleResponse = await fetch(`./asserts/about.md`);
+            const articleResponse = await fetch(`./src/asserts/about.md`);
             const article = await articleResponse.text();
             const articleHtml = marked.render(article);
             setContentHTML(articleHtml);

@@ -3,11 +3,11 @@ const path = require('path');
 module.exports = {
     // 入口文件
     entry: {
-        home: './pages/home.jsx',
-        about: './pages/about.jsx',
-        articles: './pages/articles.jsx',
-        comments: './pages/comments.jsx',
-        message: './pages/message.jsx'
+        home: './src/pages/home.jsx',
+        about: './src/pages/about.jsx',
+        articles: './src/pages/articles.jsx',
+        comments: './src/pages/comments.jsx',
+        message: './src/pages/message.jsx'
     },
     // 输出配置
     output: {

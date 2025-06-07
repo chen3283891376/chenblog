@@ -7,6 +7,7 @@
     "homepage": "https://github.com/chen3283891376/chenblog#readme",
     "scripts": {
         "format": "prettier --write \"**/*.{js,json,css,html,jsx}\"",
+        "dev": "webpack --mode development",
         "build": "webpack --mode production"
     },
     "license": "MIT",
@@ -23,6 +24,7 @@
         "@babel/core": "7.27.4",
         "@babel/preset-react": "^7.27.1",
         "babel-loader": "^10.0.0",
+        "babel-plugin-root-import": "6.6.0",
         "webpack": "^5.99.9",
         "webpack-cli": "^6.0.1",
         "react": "^18.2.0",

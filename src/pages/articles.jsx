@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom/client';
 import DOMPurify from 'dompurify';
 import markdownit from 'markdown-it';
 import hljs from 'highlight.js';
-import { lineNumbersBlock } from '../js/highlight-line-number';
-import render_katex from '../js/utils';
-import NavBar from '../components/Navbar';
-import Footer from '../components/Footer';
+import { lineNumbersBlock } from '@/js/highlight-line-number';
+import render_katex from '@/js/utils';
+import NavBar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const marked = markdownit({
     html: true,
@@ -46,13 +46,11 @@ const Article = () => {
 
         let ignore = false;
         const func = async () => {
-            // const marked = markdownit();
-
-            const response = await fetch(`./article.json`);
+            const response = await fetch(`./src/article.json`);
             const data = await response.json();
 
             const articleResponse = await fetch(
-                `./posts/${data[page - 1].file}`
+                `./src/posts/${data[page - 1].file}`
             );
             const article = await articleResponse.text();
             const articleHtml = marked.render(article);
@@ -122,7 +120,7 @@ const Article = () => {
             comments.innerHTML = '';
 
             const utterances = document.createElement('script');
-            utterances.setAttribute('src', './js/utterances-client.js');
+            utterances.setAttribute('src', './src/js/utterances-client.js');
             utterances.setAttribute('repo', 'chen3283891376/chenblog');
             utterances.setAttribute('issue-term', 'title');
             utterances.setAttribute(
