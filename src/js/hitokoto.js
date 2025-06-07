@@ -33,7 +33,19 @@ const Hitokoto = [
     '天空没有翅膀的痕迹，而我已飞过。 —— 泰戈尔'
 ];
 
-const hitokoto = () => {
+const hitokoto = async () => {
+    if (Math.random() < 0.5) return Hitokoto[Math.floor(Math.random() * Hitokoto.length)];
+    try {
+        const response = await fetch('https://v1.hitokoto.cn/?c=k');
+        const responseData = await response.json();
+        if (!responseData.from_who &&!responseData.from) return (responseData.hitokoto);
+        else if (!responseData.from_who) return `${responseData.hitokoto} —— 「${responseData.from}」`
+        else if (!responseData.from) return `${responseData.hitokoto} —— ${responseData.from_who}`
+        else return `${responseData.hitokoto} —— ${responseData.from_who}「${responseData.from}」`
+    } catch (error) {
+        console.log('hitokoto api error');
+        console.error(error);
+    }
     return Hitokoto[Math.floor(Math.random() * Hitokoto.length)];
 };
 
