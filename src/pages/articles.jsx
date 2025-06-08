@@ -7,6 +7,7 @@ import { lineNumbersBlock } from '@/js/highlight-line-number';
 import render_katex from '@/js/utils';
 import NavBar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import 'katex/dist/katex.min.css';
 
 const marked = markdownit({
     html: true,
