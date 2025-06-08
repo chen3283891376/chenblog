@@ -1,14 +1,20 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+entriesName = ['home', 'about', 'articles', 'comments','message']
+
+let entries = {};
+plugins = [new MiniCssExtractPlugin()];
+
+for (let name of entriesName) {
+    entries[name] = `./src/pages/${name}.jsx`;
+}
 
 module.exports = {
     // 入口文件
-    entry: {
-        home: './src/pages/home.jsx',
-        about: './src/pages/about.jsx',
-        articles: './src/pages/articles.jsx',
-        comments: './src/pages/comments.jsx',
-        message: './src/pages/message.jsx'
-    },
+    entry: entries,
+    // 插件配置
+    plugins: plugins,
     // 输出配置
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -23,11 +29,18 @@ module.exports = {
                 use: {
                     loader: 'babel-loader'
                 }
+            }, 
+            {
+                test: /\.css$/i,
+                use: [MiniCssExtractPlugin.loader, 'css-loader']
             }
         ]
     },
     // 解析配置
     resolve: {
         extensions: ['.js', '.jsx']
+    },
+    cache: {
+        type: 'filesystem',
     }
 };

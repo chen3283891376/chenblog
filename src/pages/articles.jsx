@@ -137,7 +137,7 @@ const Article = () => {
         <>
             <link
                 rel="stylesheet"
-                href={`./node_modules/highlight.js/styles/stackoverflow-${isDarkMode ? 'dark' : 'light'}.min.css`}
+                href={`https://fastly.jsdelivr.net/npm/highlight.js/styles/stackoverflow-${isDarkMode ? 'dark' : 'light'}.min.css`}
 
                 crossOrigin="anonymous"
             />

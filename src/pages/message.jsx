@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import NavBar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import '@/css/message.css'
 
 const MessagePage = () => {
     const [isDarkMode, setIsDarkMode] = React.useState(false);
@@ -39,7 +40,6 @@ const MessagePage = () => {
 
     return (
         <>
-            <link rel="stylesheet" href="./src/css/message.css" />
             <NavBar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
             <article className="container">
                 {messages.reverse().map((message, index) => (
