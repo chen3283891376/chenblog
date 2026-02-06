@@ -1,8 +1,8 @@
+'use client';
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import NavBar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import '@/css/message.css'
+import NavBar from '../components/Navbar';
+import Footer from '../components/Footer';
+import '../message.css';
 
 const MessagePage = () => {
     const [isDarkMode, setIsDarkMode] = React.useState(false);
@@ -25,7 +25,7 @@ const MessagePage = () => {
 
         let ignore = false;
         const func = async () => {
-            const response = await fetch('./src/asserts/messages.json');
+            const response = await fetch('/messages.json');
             const responseData = await response.json();
             setMessages(responseData);
         };
@@ -54,5 +54,4 @@ const MessagePage = () => {
     );
 };
 
-const root = ReactDOM.createRoot(document.getElementById('app'));
-root.render(<MessagePage />);
+export default MessagePage;

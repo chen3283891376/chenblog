@@ -16,8 +16,8 @@ function addStyles() {
     css.type = 'text/css';
     css.innerHTML = format(
         '.{0}{border-collapse:collapse}' +
-            '.{0} td{padding:0}' +
-            '.{1}:before{content:attr({2})}',
+        '.{0} td{padding:0}' +
+        '.{1}:before{content:attr({2})}',
         [TABLE_NAME, NUMBER_LINE_NAME, DATA_ATTR_NAME]
     );
     document.getElementsByTagName('head')[0].appendChild(css);
@@ -84,13 +84,13 @@ function addLineNumbersBlockFor(inputHtml, options) {
         for (let i = 0, l = lines.length; i < l; i++) {
             html += format(
                 '<tr>' +
-                    '<td class="{0} {1}" {3}="{5}">' +
-                    '<div class="{2}" {3}="{5}"></div>' +
-                    '</td>' +
-                    '<td class="{0} {4}" {3}="{5}">' +
-                    '{6}' +
-                    '</td>' +
-                    '</tr>',
+                '<td class="{0} {1}" {3}="{5}">' +
+                '<div class="{2}" {3}="{5}"></div>' +
+                '</td>' +
+                '<td class="{0} {4}" {3}="{5}">' +
+                '{6}' +
+                '</td>' +
+                '</tr>',
                 [
                     LINE_NAME,
                     NUMBERS_BLOCK_NAME,

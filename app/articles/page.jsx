@@ -1,34 +1,30 @@
+'use client';
 import React from 'react';
-import ReactDOM from 'react-dom/client';
 import DOMPurify from 'dompurify';
 import markdownit from 'markdown-it';
 import hljs from 'highlight.js';
-import { lineNumbersBlock } from '@/js/highlight-line-number';
-import render_katex from '@/js/utils';
-import NavBar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import render_katex from '../js/utils';
+import NavBar from '../components/Navbar';
+import Footer from '../components/Footer';
 import 'katex/dist/katex.min.css';
 
-const marked = markdownit({
-    html: true,
-    linkify: true,
-    typographer: true,
-    quotes: '“”‘’'
-});
-
 const Article = () => {
-    const params = new URLSearchParams(window.location.search);
-    const [page, setPage] = React.useState(Number(params.get('page')) || 1);
+    const [page, setPage] = React.useState(1);
     const [show_left, setShowLeft] = React.useState(true);
     const [show_right, setShowRight] = React.useState(true);
     const [title, setTitle] = React.useState('');
     const [contentHTML, setContentHTML] = React.useState('');
     const [isDarkMode, setIsDarkMode] = React.useState(false);
 
-    if (!params.get('page')) {
-        history.pushState(null, null, `?page=1`);
-    }
-    document.title = `Page ${page} - Chen Blog`;
+    React.useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        setPage(parseInt(params.get('page')) || 1);
+
+        if (!params.get('page')) {
+            history.pushState(null, null, `?page=1`);
+        }
+        document.title = `Page ${page} - Chen Blog`;
+    }, [page]);
 
     React.useEffect(() => {
         const storedMode = localStorage.getItem('theme');
@@ -47,11 +43,18 @@ const Article = () => {
 
         let ignore = false;
         const func = async () => {
-            const response = await fetch(`./src/article.json`);
+            const marked = markdownit({
+                html: true,
+                linkify: true,
+                typographer: true,
+                quotes: '“”‘’'
+            });
+
+            const response = await fetch(`/article.json`);
             const data = await response.json();
 
             const articleResponse = await fetch(
-                `./src/posts/${data[page - 1].file}`
+                `/posts/${data[page - 1].file}`
             );
             const article = await articleResponse.text();
             const articleHtml = marked.render(article);
@@ -80,58 +83,70 @@ const Article = () => {
     }, [page]);
 
     React.useEffect(() => {
-        render_katex();
-        hljs.highlightAll();
+        let ignore = false;
+        const processCodeBlocks = async () => {
+            const { lineNumbersBlock } = await import('../js/highlight-line-number');
+            
+            render_katex();
+            hljs.highlightAll();
 
-        document.querySelectorAll('.marked pre code').forEach(el => {
-            lineNumbersBlock(el);
+            document.querySelectorAll('.code-header').forEach(header => header.remove());
 
-            const lang = el.className
-                .replace('language-', '')
-                .replace(' hljs', '')
-                .replace('hljs ', '');
-            let head_el = document.createElement('div');
-            head_el.className = 'code-header';
+            document.querySelectorAll('.marked pre code').forEach(el => {
+                lineNumbersBlock(el);
 
-            let lang_el = document.createElement('span');
-            if (lang === 'undefined') {
-                lang_el.innerText = 'Plain Text';
-            } else {
-                lang_el.innerText = lang;
-            }
-            head_el.appendChild(lang_el);
+                const lang = el.className
+                    .replace('language-', '')
+                    .replace(' hljs', '')
+                    .replace('hljs ', '');
+                let head_el = document.createElement('div');
+                head_el.className = 'code-header';
 
-            let copy_el = document.createElement('button');
-            copy_el.className = 'copy-btn';
-            copy_el.innerText = 'Copy';
-            copy_el.addEventListener('click', () => {
-                navigator.clipboard.writeText(el.outerText).then(() => null);
-                copy_el.innerText = 'Copied!';
-                setTimeout(() => {
-                    copy_el.innerText = 'Copy';
-                }, 1000);
+                let lang_el = document.createElement('span');
+                if (lang === 'undefined') {
+                    lang_el.innerText = 'Plain Text';
+                } else {
+                    lang_el.innerText = lang;
+                }
+                head_el.appendChild(lang_el);
+
+                let copy_el = document.createElement('button');
+                copy_el.className = 'copy-btn';
+                copy_el.innerText = 'Copy';
+                copy_el.addEventListener('click', () => {
+                    navigator.clipboard.writeText(el.outerText).then(() => null);
+                    copy_el.innerText = 'Copied!';
+                    setTimeout(() => {
+                        copy_el.innerText = 'Copy';
+                    }, 1000);
+                });
+                head_el.appendChild(copy_el);
+
+                el.parentNode.insertBefore(head_el, el);
             });
-            head_el.appendChild(copy_el);
 
-            el.parentNode.insertBefore(head_el, el);
-        });
+            const comments = document.querySelector('.comments');
+            if (comments) {
+                comments.innerHTML = '';
 
-        const comments = document.querySelector('.comments');
-        if (comments) {
-            comments.innerHTML = '';
+                const utterances = document.createElement('script');
+                utterances.setAttribute('src', '/utterances-client.js');
+                utterances.setAttribute('repo', 'chen3283891376/chenblog');
+                utterances.setAttribute('issue-term', 'title');
+                utterances.setAttribute(
+                    'theme',
+                    isDarkMode ? 'github-dark' : 'github-light'
+                );
+                utterances.setAttribute('crossOrigin', 'anonymous');
+                utterances.setAttribute('async', 'true');
+                comments.appendChild(utterances);
+            }
+        };
 
-            const utterances = document.createElement('script');
-            utterances.setAttribute('src', './src/js/utterances-client.js');
-            utterances.setAttribute('repo', 'chen3283891376/chenblog');
-            utterances.setAttribute('issue-term', 'title');
-            utterances.setAttribute(
-                'theme',
-                isDarkMode ? 'github-dark' : 'github-light'
-            );
-            utterances.setAttribute('crossOrigin', 'anonymous');
-            utterances.setAttribute('async', 'true');
-            comments.appendChild(utterances);
-        }
+        if (!ignore) processCodeBlocks().then();
+        return () => {
+            ignore = true;
+        };
     }, [contentHTML, isDarkMode]);
 
     return (
@@ -139,7 +154,6 @@ const Article = () => {
             <link
                 rel="stylesheet"
                 href={`https://fastly.jsdelivr.net/npm/highlight.js/styles/stackoverflow-${isDarkMode ? 'dark' : 'light'}.min.css`}
-
                 crossOrigin="anonymous"
             />
             <NavBar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
@@ -188,6 +202,8 @@ const Article = () => {
                         }}
                     >
                         <h4>About Me</h4>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src='https://avatars.githubusercontent.com/u/168898000?v=4' alt={'Chenify'}></img>
                     </div>
                 </div>
             </article>
@@ -224,5 +240,4 @@ const Article = () => {
     );
 };
 
-const root = ReactDOM.createRoot(document.getElementById('app'));
-root.render(<Article />);
+export default Article;

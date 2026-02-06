@@ -15,7 +15,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode, haveIframe = false }) => {
                 className="blog-title"
                 style={{ cursor: 'pointer' }}
                 onClick={() => {
-                    window.location.href = './index.html';
+                    window.location.href = './';
                 }}
             >
                 Chen Blog
@@ -30,19 +30,19 @@ const Navbar = ({ isDarkMode, setIsDarkMode, haveIframe = false }) => {
             <nav className="blog-nav">
                 <ul className="blog-nav-links">
                     <li className="blog-nav-links-item">
-                        <a href="./index.html">主页</a>
+                        <a href="/">主页</a>
                     </li>
                     <li className="blog-nav-links-item">
-                        <a href="./about.html">关于</a>
+                        <a href="/about">关于</a>
                     </li>
                     <li className="blog-nav-links-item">
-                        <a href="./friends.html">友链</a>
+                        <a href="/friends">友链</a>
                     </li>
                     <li className="blog-nav-links-item">
-                        <a href="./message.html">闲言碎语</a>
+                        <a href="/message">闲言碎语</a>
                     </li>
                     <li className="blog-nav-links-item">
-                        <a href="./comments.html">留言板</a>
+                        <a href="/comments">留言板</a>
                     </li>
                 </ul>
             </nav>
@@ -50,7 +50,4 @@ const Navbar = ({ isDarkMode, setIsDarkMode, haveIframe = false }) => {
     );
 };
 
-// (function () {
-//     window.NavBar = Navbar;
-// })();
 export default Navbar;

@@ -1,7 +1,7 @@
+'use client'
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import NavBar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import NavBar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const CommentsPage = () => {
     const [isDarkMode, setIsDarkMode] = React.useState(false);
@@ -25,6 +25,8 @@ const CommentsPage = () => {
                 isDarkMode ? 'github-dark' : 'github-light'
             );
         }
+        const loader = document.querySelector('.loader');
+        loader.classList.add('hidden');
     }, [isDarkMode]);
 
     return (
@@ -39,7 +41,7 @@ const CommentsPage = () => {
 
                         const script = document.createElement('script');
                         script.className = 'utterances';
-                        script.src = './src/js/utterances-client.js';
+                        script.src = '/utterances-client.js';
                         script.setAttribute('repo', 'chen3283891376/chenblog');
                         script.setAttribute('issue-term', 'title');
                         script.setAttribute(
@@ -57,5 +59,4 @@ const CommentsPage = () => {
     );
 };
 
-const root = ReactDOM.createRoot(document.getElementById('app'));
-root.render(<CommentsPage />);
+export default CommentsPage;

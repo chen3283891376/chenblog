@@ -1,5 +1,5 @@
 import React from 'react';
-import hitokoto from '@/js/hitokoto';
+import hitokoto from '../js/hitokoto';
 
 const Footer = () => {
     const [hitokoto_text, setHitokotoText] = React.useState('');
@@ -7,7 +7,7 @@ const Footer = () => {
         let ignore = false;
         const func = async () => {
             setHitokotoText(await hitokoto());
-        }
+        };
         if (!ignore) func().then();
         return () => {
             ignore = true;
