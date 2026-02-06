@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@netlify/plugin-nextjs": "^5.15.7",
     "dompurify": "^3.3.1",
     "highlight.js": "^11.11.1",
     "katex": "^0.16.28",
