@@ -47,15 +47,13 @@ const Article = () => {
                 html: true,
                 linkify: true,
                 typographer: true,
-                quotes: '“”‘’'
+                quotes: '“”‘’',
             });
 
             const response = await fetch(`/article.json`);
             const data = await response.json();
 
-            const articleResponse = await fetch(
-                `/posts/${data[page - 1].file}`
-            );
+            const articleResponse = await fetch(`/posts/${data[page - 1].file}`);
             const article = await articleResponse.text();
             const articleHtml = marked.render(article);
 
@@ -86,7 +84,7 @@ const Article = () => {
         let ignore = false;
         const processCodeBlocks = async () => {
             const { lineNumbersBlock } = await import('../js/highlight-line-number');
-            
+
             render_katex();
             hljs.highlightAll();
 
@@ -95,10 +93,7 @@ const Article = () => {
             document.querySelectorAll('.marked pre code').forEach(el => {
                 lineNumbersBlock(el);
 
-                const lang = el.className
-                    .replace('language-', '')
-                    .replace(' hljs', '')
-                    .replace('hljs ', '');
+                const lang = el.className.replace('language-', '').replace(' hljs', '').replace('hljs ', '');
                 let head_el = document.createElement('div');
                 head_el.className = 'code-header';
 
@@ -133,10 +128,7 @@ const Article = () => {
                 utterances.setAttribute('src', '/utterances-client.js');
                 utterances.setAttribute('repo', 'chen3283891376/chenblog');
                 utterances.setAttribute('issue-term', 'title');
-                utterances.setAttribute(
-                    'theme',
-                    isDarkMode ? 'github-dark' : 'github-light'
-                );
+                utterances.setAttribute('theme', isDarkMode ? 'github-dark' : 'github-light');
                 utterances.setAttribute('crossOrigin', 'anonymous');
                 utterances.setAttribute('async', 'true');
                 comments.appendChild(utterances);
@@ -161,7 +153,7 @@ const Article = () => {
                 <h3
                     style={{
                         marginLeft: '10px',
-                        marginBlockStart: '10px'
+                        marginBlockStart: '10px',
                     }}
                 >
                     Article: {title}
@@ -176,7 +168,7 @@ const Article = () => {
                             height: 'calc(100vh - 245px)',
                             overflow: 'auto',
                             position: 'relative',
-                            width: '80%'
+                            width: '80%',
                         }}
                         ref={ref => {
                             if (ref) {
@@ -198,12 +190,12 @@ const Article = () => {
                             height: 'calc(100vh - 245px)',
                             overflow: 'auto',
                             position: 'relative',
-                            width: '20%'
+                            width: '20%',
                         }}
                     >
                         <h4>About Me</h4>
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src='https://avatars.githubusercontent.com/u/168898000?v=4' alt={'Chenify'}></img>
+                        <img src="https://avatars.githubusercontent.com/u/168898000?v=4" alt={'Chenify'}></img>
                     </div>
                 </div>
             </article>
@@ -211,7 +203,7 @@ const Article = () => {
                 className="pretty-button"
                 style={{
                     left: 0,
-                    display: show_left ? 'block' : 'none'
+                    display: show_left ? 'block' : 'none',
                 }}
                 onClick={() => {
                     setPage(page - 1);
@@ -225,7 +217,7 @@ const Article = () => {
                 className="pretty-button"
                 style={{
                     right: 0,
-                    display: show_right ? 'block' : 'none'
+                    display: show_right ? 'block' : 'none',
                 }}
                 onClick={() => {
                     setPage(page + 1);

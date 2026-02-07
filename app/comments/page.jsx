@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React from 'react';
 import NavBar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -20,10 +20,7 @@ const CommentsPage = () => {
     React.useEffect(() => {
         const utterances = document.querySelector('.utterances');
         if (utterances) {
-            utterances.setAttribute(
-                'theme',
-                isDarkMode ? 'github-dark' : 'github-light'
-            );
+            utterances.setAttribute('theme', isDarkMode ? 'github-dark' : 'github-light');
         }
         const loader = document.querySelector('.loader');
         loader.classList.add('hidden');
@@ -44,10 +41,7 @@ const CommentsPage = () => {
                         script.src = '/utterances-client.js';
                         script.setAttribute('repo', 'chen3283891376/chenblog');
                         script.setAttribute('issue-term', 'title');
-                        script.setAttribute(
-                            'theme',
-                            isDarkMode ? 'github-dark' : 'github-light'
-                        );
+                        script.setAttribute('theme', isDarkMode ? 'github-dark' : 'github-light');
                         script.setAttribute('crossOrigin', 'anonymous');
                         script.setAttribute('async', 'true');
                         utterances.appendChild(script);

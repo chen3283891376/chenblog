@@ -21,11 +21,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode, haveIframe = false }) => {
                 Chen Blog
             </h1>
             <button className="theme-toggle-btn" onClick={toggleTheme}>
-                {isDarkMode ? (
-                    <i className="fa-solid fa-sun"></i>
-                ) : (
-                    <i className="fa-solid fa-moon"></i>
-                )}
+                {isDarkMode ? <i className="fa-solid fa-sun"></i> : <i className="fa-solid fa-moon"></i>}
             </button>
             <nav className="blog-nav">
                 <ul className="blog-nav-links">

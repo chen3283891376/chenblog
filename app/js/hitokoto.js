@@ -30,23 +30,18 @@ const Hitokoto = [
     '死亡不是失去生命，而是走出了时间。 —— 余华《在细雨中呼喊》',
     '我曾踏月而来，只因你在山中。 —— 席慕蓉《山月》',
     '我明白你会来，所以我等。 —— 沈从文《雨后》',
-    '天空没有翅膀的痕迹，而我已飞过。 —— 泰戈尔'
+    '天空没有翅膀的痕迹，而我已飞过。 —— 泰戈尔',
 ];
 
 const hitokoto = async () => {
-    if (Math.random() < 0.5)
-        return Hitokoto[Math.floor(Math.random() * Hitokoto.length)];
+    if (Math.random() < 0.5) return Hitokoto[Math.floor(Math.random() * Hitokoto.length)];
     try {
         const response = await fetch('https://v1.hitokoto.cn/?c=k');
         const responseData = await response.json();
-        if (!responseData.from_who && !responseData.from)
-            return responseData.hitokoto;
-        else if (!responseData.from_who)
-            return `${responseData.hitokoto} —— 「${responseData.from}」`;
-        else if (!responseData.from)
-            return `${responseData.hitokoto} —— ${responseData.from_who}`;
-        else
-            return `${responseData.hitokoto} —— ${responseData.from_who}「${responseData.from}」`;
+        if (!responseData.from_who && !responseData.from) return responseData.hitokoto;
+        else if (!responseData.from_who) return `${responseData.hitokoto} —— 「${responseData.from}」`;
+        else if (!responseData.from) return `${responseData.hitokoto} —— ${responseData.from_who}`;
+        else return `${responseData.hitokoto} —— ${responseData.from_who}「${responseData.from}」`;
     } catch (error) {
         console.log('hitokoto api error');
         console.error(error);

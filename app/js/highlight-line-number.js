@@ -14,20 +14,16 @@ addStyles();
 function addStyles() {
     let css = document.createElement('style');
     css.type = 'text/css';
-    css.innerHTML = format(
-        '.{0}{border-collapse:collapse}' +
-        '.{0} td{padding:0}' +
-        '.{1}:before{content:attr({2})}',
-        [TABLE_NAME, NUMBER_LINE_NAME, DATA_ATTR_NAME]
-    );
+    css.innerHTML = format('.{0}{border-collapse:collapse}' + '.{0} td{padding:0}' + '.{1}:before{content:attr({2})}', [
+        TABLE_NAME,
+        NUMBER_LINE_NAME,
+        DATA_ATTR_NAME,
+    ]);
     document.getElementsByTagName('head')[0].appendChild(css);
 }
 
 function initLineNumbersOnLoad(options) {
-    if (
-        document.readyState === 'interactive' ||
-        document.readyState === 'complete'
-    ) {
+    if (document.readyState === 'interactive' || document.readyState === 'complete') {
         documentReady(options);
     } else {
         window.addEventListener('DOMContentLoaded', function () {
@@ -84,13 +80,13 @@ function addLineNumbersBlockFor(inputHtml, options) {
         for (let i = 0, l = lines.length; i < l; i++) {
             html += format(
                 '<tr>' +
-                '<td class="{0} {1}" {3}="{5}">' +
-                '<div class="{2}" {3}="{5}"></div>' +
-                '</td>' +
-                '<td class="{0} {4}" {3}="{5}">' +
-                '{6}' +
-                '</td>' +
-                '</tr>',
+                    '<td class="{0} {1}" {3}="{5}">' +
+                    '<div class="{2}" {3}="{5}"></div>' +
+                    '</td>' +
+                    '<td class="{0} {4}" {3}="{5}">' +
+                    '{6}' +
+                    '</td>' +
+                    '</tr>',
                 [
                     LINE_NAME,
                     NUMBERS_BLOCK_NAME,
@@ -98,8 +94,8 @@ function addLineNumbersBlockFor(inputHtml, options) {
                     DATA_ATTR_NAME,
                     CODE_BLOCK_NAME,
                     i + options.startFrom,
-                    lines[i].length > 0 ? lines[i] : ' '
-                ]
+                    lines[i].length > 0 ? lines[i] : ' ',
+                ],
             );
         }
 
@@ -118,7 +114,7 @@ function mapOptions(element, options) {
     options = options || {};
     return {
         singleLine: getSingleLineOption(options),
-        startFrom: getStartFromOption(element, options)
+        startFrom: getStartFromOption(element, options),
     };
 }
 
@@ -182,10 +178,7 @@ function duplicateMultilineNode(element) {
 
     for (var i = 0, result = ''; i < lines.length; i++) {
         let lineText = lines[i].length > 0 ? lines[i] : ' ';
-        result += format('<span class="{0}">{1}</span>\n', [
-            className,
-            lineText
-        ]);
+        result += format('<span class="{0}">{1}</span>\n', [className, lineText]);
     }
 
     element.innerHTML = result.trim();
@@ -217,9 +210,7 @@ function format(format, args) {
  * @returns {String} Attribute value or empty.
  */
 function getAttribute(element, attrName) {
-    return element.hasAttribute(attrName)
-        ? element.getAttribute(attrName)
-        : null;
+    return element.hasAttribute(attrName) ? element.getAttribute(attrName) : null;
 }
 
 /**

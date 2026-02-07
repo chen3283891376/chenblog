@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
-  output: 'export',
-  basePath: process.env.PAGES_BASE_PATH,
+    /* config options here */
+    output: 'export',
+    basePath: process.env.PAGES_BASE_PATH,
 };
 
 module.exports = nextConfig;
