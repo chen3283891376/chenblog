@@ -22,8 +22,6 @@ const CommentsPage = () => {
         if (utterances) {
             utterances.setAttribute('theme', isDarkMode ? 'github-dark' : 'github-light');
         }
-        const loader = document.querySelector('.loader');
-        loader.classList.add('hidden');
     }, [isDarkMode]);
 
     return (

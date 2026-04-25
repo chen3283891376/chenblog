@@ -20,9 +20,6 @@ const MessagePage = () => {
     }, []);
 
     React.useEffect(() => {
-        const loader = document.querySelector('.loader');
-        loader.classList.remove('hidden');
-
         let ignore = false;
         const func = async () => {
             const response = await fetch('/messages.json');
@@ -30,9 +27,7 @@ const MessagePage = () => {
             setMessages(responseData);
         };
         if (!ignore)
-            func().then(() => {
-                loader.classList.add('hidden');
-            });
+            func().then();
         return () => {
             ignore = true;
         };
@@ -42,7 +37,7 @@ const MessagePage = () => {
         <>
             <NavBar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
             <article className="container">
-                {messages.reverse().map((message, index) => (
+                {messages.toReversed().map((message, index) => (
                     <div key={index} className="card">
                         <p>{message.text}</p>
                         <p>{message.time}</p>

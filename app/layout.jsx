@@ -9,8 +9,11 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body>
-                <div className="loader"></div>
-                <div id="app">{children}</div>
+                <div id="app">
+                    <main className="main-wrapper">
+                        {children}
+                    </main>
+                </div>
             </body>
         </html>
     );

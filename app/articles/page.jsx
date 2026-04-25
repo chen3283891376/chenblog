@@ -38,9 +38,6 @@ const Article = () => {
     }, []);
 
     React.useEffect(() => {
-        const loader = document.querySelector('.loader');
-        loader.classList.remove('hidden');
-
         let ignore = false;
         const func = async () => {
             const marked = markdownit({
@@ -72,9 +69,7 @@ const Article = () => {
             setContentHTML(articleHtml);
         };
         if (!ignore)
-            func().then(() => {
-                loader.classList.add('hidden');
-            });
+            func().then();
         return () => {
             ignore = true;
         };

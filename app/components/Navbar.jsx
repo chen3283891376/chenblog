@@ -1,13 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 
 const Navbar = ({ isDarkMode, setIsDarkMode, haveIframe = false }) => {
-    const [currentPath, setCurrentPath] = useState('/');
-
-    useEffect(() => {
-        if (typeof window !== 'undefined') setCurrentPath(window.location.pathname || '/');
-    }, []);
+    const pathname = usePathname() || '/';
+    const router = useRouter();
 
     const toggleTheme = () => {
         setIsDarkMode(prevMode => {
@@ -27,8 +26,8 @@ const Navbar = ({ isDarkMode, setIsDarkMode, haveIframe = false }) => {
     ];
 
     const isActive = (href) => {
-        if (href === '/') return currentPath === '/';
-        return currentPath.startsWith(href);
+        if (href === '/') return pathname === '/';
+        return pathname.startsWith(href);
     };
 
     return (
@@ -36,9 +35,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode, haveIframe = false }) => {
             <h1
                 className="blog-title"
                 style={{ cursor: 'pointer' }}
-                onClick={() => {
-                    window.location.href = './';
-                }}
+                onClick={() => router.push('/')}
             >
                 Chen Blog
             </h1>
@@ -52,7 +49,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode, haveIframe = false }) => {
                     <ul className="blog-nav-links">
                         {links.map(link => (
                             <li key={link.href} className="blog-nav-links-item">
-                                <a href={link.href} className={isActive(link.href) ? 'active' : ''}>{link.label}</a>
+                                <Link href={link.href} className={isActive(link.href) ? 'active' : ''}>{link.label}</Link>
                             </li>
                         ))}
                     </ul>

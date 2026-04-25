@@ -23,9 +23,6 @@ const Home = () => {
     }, []);
 
     React.useEffect(() => {
-        const loader = document.querySelector('.loader');
-        loader.classList.remove('hidden');
-
         let ignore = false;
         const func = async () => {
             const response = await fetch(`/article.json`);
@@ -41,10 +38,7 @@ const Home = () => {
             );
             setArticleContents(contents);
         };
-        if (!ignore)
-            func().then(() => {
-                loader.classList.add('hidden');
-            });
+        if (!ignore) func().then();
         return () => {
             ignore = true;
         };
