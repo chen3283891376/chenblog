@@ -547,3 +547,41 @@ article {
     margin: 0 auto;
     margin-top: 90px;
 }
+
+/* 分页样式 */
+.pagination {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.page-btn {
+    margin-left: 3px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.08);
+    background: transparent;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.18s ease, color 0.18s ease, transform 0.08s ease;
+    font-weight: 500;
+}
+
+.page-btn:hover {
+    background-color: color-mix(in srgb, var(--pretty-button-background-color) 10%, transparent);
+}
+
+.page-btn.active {
+    background-color: var(--pretty-button-background-color);
+    color: var(--pretty-button-text-color);
+    border-color: transparent;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+
+.page-btn:focus {
+    outline: 2px solid color-mix(in srgb, var(--pretty-button-background-color) 25%, transparent);
+    outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+    .page-btn { padding: 6px 8px; margin: 0 4px; }
+}

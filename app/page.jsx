@@ -70,7 +70,7 @@ const Home = () => {
                     border: '1px solid #ccc',
                     borderRadius: '5px',
                     padding: '20px',
-                    height: 'calc(100vh - 200px)',
+                    height: 'calc(100vh - 210px)',
                     overflow: 'auto',
                     position: 'relative',
                     marginTop: '90px',
@@ -95,19 +95,12 @@ const Home = () => {
                     </div>
                 ))}
             </div>
-            <div className="pagination" style={{ textAlign: 'center' }}>
+            <div className="pagination">
                 {Array.from({ length: totalPages }, (_, index) => (
                     <button
                         key={index}
                         onClick={() => handlePageChange(index + 1)}
-                        style={{
-                            margin: '0 5px',
-                            padding: '5px 10px',
-                            border: '1px solid #ccc',
-                            borderRadius: '3px',
-                            background: currentPage === index + 1 ? '#007BFF' : 'white',
-                            color: currentPage === index + 1 ? 'white' : 'black',
-                        }}
+                        className={`page-btn ${currentPage === index + 1 ? 'active' : ''}`}
                     >
                         {index + 1}
                     </button>
