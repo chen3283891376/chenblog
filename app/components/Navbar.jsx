@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 
-const Navbar = ({ isDarkMode, setIsDarkMode, haveIframe = false }) => {
+const Navbar = ({ isDarkMode, setIsDarkMode }) => {
     const pathname = usePathname() || '/';
     const router = useRouter();
 
@@ -32,29 +32,27 @@ const Navbar = ({ isDarkMode, setIsDarkMode, haveIframe = false }) => {
 
     return (
         <header className="blog-header">
-            <h1
-                className="blog-title"
-                style={{ cursor: 'pointer' }}
-                onClick={() => router.push('/')}
-            >
+            <h1 className="blog-title" onClick={() => router.push('/')}>
                 Chen Blog
             </h1>
-
-            <button className="theme-toggle-btn" onClick={toggleTheme} aria-label="切换主题">
-                {isDarkMode ? <i className="fa-solid fa-sun"></i> : <i className="fa-solid fa-moon"></i>}
-            </button>
 
             <nav className="blog-nav">
                 <div className="blog-nav-pill">
                     <ul className="blog-nav-links">
                         {links.map(link => (
-                            <li key={link.href} className="blog-nav-links-item">
-                                <Link href={link.href} className={isActive(link.href) ? 'active' : ''}>{link.label}</Link>
+                            <li key={link.href}>
+                                <Link href={link.href} className={isActive(link.href) ? 'active' : ''}>
+                                    {link.label}
+                                </Link>
                             </li>
                         ))}
                     </ul>
                 </div>
             </nav>
+
+            <button className="theme-toggle-btn" onClick={toggleTheme} aria-label="切换主题">
+                {isDarkMode ? <i className="fa-solid fa-sun"></i> : <i className="fa-solid fa-moon"></i>}
+            </button>
         </header>
     );
 };

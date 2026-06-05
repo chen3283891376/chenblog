@@ -2,6 +2,7 @@
 import React from 'react';
 import NavBar from './components/Navbar';
 import Footer from './components/Footer';
+import Link from 'next/link';
 
 const itemsPerPage = 5; // 每页显示的文章数量
 
@@ -80,7 +81,7 @@ const Home = () => {
                     <div key={index}>
                         <h2>{currentArticles[index].name}</h2>
                         <p>{content}</p>
-                        <a href={`./articles?page=${currentArticles[index].id}`}>查看更多</a>
+                        <Link href={`/articles?page=${currentArticles[index].id}`}>查看更多</Link>
                         <i
                             style={{
                                 float: 'right',
